@@ -1,0 +1,15 @@
+﻿table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    font-family: Arial;
+    font-size: 12px;
+    padding: 5px;
+}
+
+table tr:first-child td {
+    color: black;
+    background-color: lightgray;
+}
