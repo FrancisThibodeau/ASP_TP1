@@ -139,6 +139,42 @@ namespace TP1 {
         protected global::System.Web.UI.WebControls.Button BTN_Annuler;
         
         /// <summary>
+        /// PN_Captcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel PN_Captcha;
+        
+        /// <summary>
+        /// RegenarateCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton RegenarateCaptcha;
+        
+        /// <summary>
+        /// IMGCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image IMGCaptcha;
+        
+        /// <summary>
+        /// TB_Captcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_Captcha;
+        
+        /// <summary>
         /// IMG_PreviewAvatar control.
         /// </summary>
         /// <remarks>
@@ -218,5 +254,14 @@ namespace TP1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator CV_EmailConfirm;
+        
+        /// <summary>
+        /// CV_Captcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CV_Captcha;
     }
 }
