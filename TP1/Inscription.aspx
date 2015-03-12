@@ -39,7 +39,7 @@
                         </tr>
                         <!-- Bouton S'inscrire -->
                         <tr>
-                            <td></td><td><asp:Button ID="BTN_Inscrire" runat="server" OnClick="BTN_Inscrire_Click" Text="S'inscrire..." /></td>
+                            <td></td><td><asp:Button ID="BTN_Inscrire" runat="server" OnClick="BTN_Inscrire_Click" Text="S'inscrire..." ValidationGroup="Inscription"/></td>
                         </tr>
                         <!-- Bouton Annuler -->
                         <tr>
