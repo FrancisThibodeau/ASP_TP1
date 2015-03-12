@@ -24,10 +24,7 @@ namespace TP1
             if(user.SelectByFieldName("USERNAME", TB_Username.Text))
             {
                 user.GetValues();
-                if (user.Password == TB_Password.Text)
-                { 
-                    
-                }
+                
             }
         }
         protected void CV_Username_ServerValidate(object source, ServerValidateEventArgs args)
@@ -58,6 +55,7 @@ namespace TP1
             {
                 TB_Password.BackColor = System.Drawing.Color.White;
                 args.IsValid = true;
+                Response.Redirect("Inscription.aspx");
             }
         }
     }
