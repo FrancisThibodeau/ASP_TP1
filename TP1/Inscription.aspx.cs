@@ -13,6 +13,29 @@ namespace TP1
         {
             IMG_PreviewAvatar.ImageUrl = "~/Images/Anonymous.png";
         }
+        private void AddUser()
+        {
+            TableUsers user = new TableUsers((String)Application["MainDB"], this);
+
+            String avatar_ID = "";
+            if (FU_Avatar.FileName != "")
+            {
+                String Avatar_Path = "";
+
+                avatar_ID = Guid.NewGuid().ToString();
+                Avatar_Path = Server.MapPath(@"~\Avatars\") + avatar_ID + ".png";
+                FU_Avatar.SaveAs(Avatar_Path);
+            }
+
+            user.Username = TB_Username.Text;
+            user.Password = TB_Password.Text;
+            user.Fullname = TB_Fullname.Text;
+            user.Email = TB_Email.Text;
+            user.Avatar = avatar_ID;
+
+            user.Insert();
+        }
+
         protected void CV_Fullname_ServerValidate(object source, ServerValidateEventArgs args)
         {
             if (TB_Fullname.Text == "")
@@ -95,6 +118,7 @@ namespace TP1
         {
             if (Page.IsValid)
             {
+                AddUser();
                 Response.Redirect("ListerUsers.aspx");
             }
         }
