@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MainDB.mdf" />
     <Content Include="App_Data\MainDB_log.ldf">
       <DependentUpon>MainDB.mdf</DependentUpon>
     </Content>
@@ -84,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="App_Data\MainDB.mdf" />
     <Content Include="ListerUsers.aspx" />
     <Content Include="Styles.css" />
     <Content Include="Web.config" />
@@ -126,6 +126,7 @@
     <Compile Include="TableUsers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Avatars\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
