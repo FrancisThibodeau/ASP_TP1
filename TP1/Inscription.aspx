@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
     <div id="Inscription">
+        <script type="text/javascript" src="ClientFormUtilities.js"></script>
         <table>
             <tr> <!------------------------ FORMULAIRE ------------------------>
                 <td> <!------- Informations et Boutons ------->
@@ -52,9 +53,9 @@
                         <!-- Captcha -->
                         <tr><td></td></tr>
                         <!-- Image Avatar -->
-                        <tr><td><asp:Image ID="IMG_PreviewAvatar" runat="server"/></td></tr>
+                        <tr><td><asp:Image ID="IMG_PreviewAvatar" runat="server" ClientIDMode="Static"/></td></tr>
                         <!-- Bouton Choisir -->
-                        <tr><td><asp:FileUpload ID="FU_Avatar" runat="server" /></td></tr>
+                        <tr><td><asp:FileUpload ID="FU_Avatar" runat="server" ClientIDMode="Static" onchange="PreLoadImage();"/></td></tr>
                     </table>
                 </td>
             </tr>

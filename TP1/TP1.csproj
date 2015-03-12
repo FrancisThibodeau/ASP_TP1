@@ -60,6 +60,7 @@
     <Content Include="App_Data\MainDB_log.ldf">
       <DependentUpon>MainDB.mdf</DependentUpon>
     </Content>
+    <Content Include="ClientFormUtilities.js" />
     <Content Include="Images\Anonymous.png" />
     <Content Include="Images\Busy.png" />
     <Content Include="Images\Delete.bmp" />
