@@ -45,10 +45,5 @@ namespace TP1
             SetColumnTitle("EMAIL", "Courriel");
             SetColumnTitle("AVATAR", "Avatar");
         }
-
-        public override void Insert()
-        {
-            InsertRecord(Username, Password, Fullname, Email, Avatar);
-        }
     }
 }
