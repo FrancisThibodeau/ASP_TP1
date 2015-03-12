@@ -45,9 +45,31 @@ namespace TP1
             SetColumnTitle("EMAIL", "Courriel");
             SetColumnTitle("AVATAR", "Avatar");
         }
+
+        public override void InitCellsContentDelegate()
+        {
+            base.InitCellsContentDelegate();
+            SetCellContentDelegate("AVATAR", ContentDelegateAvatar);
+        }
+
         public override void Insert()
         {
             InsertRecord(Username,Password,Fullname,Email,Avatar);
+        }
+
+        System.Web.UI.WebControls.WebControl ContentDelegateAvatar()
+        {
+            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
+            if (Avatar != "")
+            {
+                img.ImageUrl = "~/Avatars/" + Avatar + ".png";
+            }
+            else
+            {
+                img.ImageUrl = "~/Images/Anonymous.png";
+            }
+            img.Height = img.Width = 40;
+            return img;
         }
     }
 }
