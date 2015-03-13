@@ -20,13 +20,18 @@ namespace TP1
 
         protected void BTN_Login_Click(object sender, EventArgs e)
         {
-            TableUsers user = new TableUsers((String)Application["MainDB"], this);
-            if(user.SelectByFieldName("USERNAME", TB_Username.Text))
+            if (Page.IsValid)
             {
-                user.GetValues();
-                
+                LoginUser();
             }
         }
+
+        private void LoginUser()
+        {
+            RecordLogin();
+            Response.Redirect("Inscription.aspx");
+        }
+
         protected void CV_Username_ServerValidate(object source, ServerValidateEventArgs args)
         {
             if (TB_Username.Text == "")
@@ -55,8 +60,31 @@ namespace TP1
             {
                 TB_Password.BackColor = System.Drawing.Color.White;
                 args.IsValid = true;
-                Response.Redirect("Inscription.aspx");
             }
+        }
+
+        // Cette fonction va dans le logout, je l'ai mis là pour la tester
+        private void RecordLogin()
+        {
+            TableLogins login = new TableLogins((String)Application["MainDB"], this);
+            TableUsers user = new TableUsers((String)Application["MainDB"], this);
+            user.SelectByFieldName("USERNAME", TB_Username.Text);
+            login.UserID = user.ID;
+            login.LoginDate = (DateTime)Session["StartTime"];
+            login.LogoutDate = DateTime.Now;
+            login.IPAddress = GetUserIP(); // "GetUserIp"
+            login.Insert();
+        }
+
+        public string GetUserIP()
+        {
+            string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (!string.IsNullOrEmpty(ipList))
+                return ipList.Split(',')[0];
+            string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
+            if (ipAddress == "::1") // local host
+                ipAddress = "127.0.0.1";
+            return ipAddress;
         }
     }
 }

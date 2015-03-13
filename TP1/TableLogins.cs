@@ -13,7 +13,7 @@ namespace TP1
         public DateTime LogoutDate { get; set; }
         public String IPAddress { get; set; }
 
-        TableLogins(String connexionString, System.Web.UI.Page page)
+        public TableLogins(String connexionString, System.Web.UI.Page page)
             : base(connexionString, page)
         {
             SQLTableName = "LOGINS";
@@ -25,7 +25,7 @@ namespace TP1
             UserID = long.Parse(this["USERID"]);
             LoginDate = DateTime.Parse(this["LOGINDATE"]);
             LogoutDate = DateTime.Parse(this["LOGOUTDATE"]);
-            IPAddress = this["IPADRESS"];
+            IPAddress = this["IPADDRESS"];
         }
 
         public override void Insert()
