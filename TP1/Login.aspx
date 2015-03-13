@@ -26,7 +26,7 @@
     <table style="width: 100%;">
         <tr>
             <td>
-                <asp:Button ID="BTN_Login" runat="server" OnClick="BTN_Login_Click" Text="Login" />
+                <asp:Button ID="BTN_Login" runat="server" OnClick="BTN_Login_Click" ValidationGroup="Login" Text ="Login" />
             </td>
         </tr>
         <tr>
@@ -46,13 +46,13 @@
                         HeaderText="Erreur sur les champs suivants :"
                         DisplayMode="BulletList"
                         EnableClientScript="true"
-                        ValidationGroup="Inscription" />
+                        ValidationGroup="Login" />
                 <asp:CustomValidator runat="server"
                         ID="CV_Username"
                         ControlToValidate="TB_Username"
                         ErrorMessage="Nom d'usager"
                         OnServerValidate="CV_Username_ServerValidate"
-                        ValidationGroup="Inscription"
+                        ValidationGroup="Login"
                         ValidateEmptyText="true"
                         Display="None">
                     </asp:CustomValidator>
