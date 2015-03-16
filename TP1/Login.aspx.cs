@@ -28,6 +28,14 @@ namespace TP1
 
         private void LoginUser()
         {
+            // Création d'une TableUser pour cette session
+            Session["User"] = new TableUsers((String)Application["MainDB"], this);
+            ((TableUsers)Session["User"]).SelectByFieldName("USERNAME", TB_Username.Text);
+
+            // Création d'une TableLogins pour cette session
+            Session["Login"] = new TableLogins((String)Application["MainDB"], this);
+
+            // Temporaire
             RecordLogin();
             Response.Redirect("Inscription.aspx");
         }
@@ -66,9 +74,8 @@ namespace TP1
         // Cette fonction va dans le logout, je l'ai mis là pour la tester
         private void RecordLogin()
         {
-            TableLogins login = new TableLogins((String)Application["MainDB"], this);
-            TableUsers user = new TableUsers((String)Application["MainDB"], this);
-            user.SelectByFieldName("USERNAME", TB_Username.Text);
+            TableLogins login = (TableLogins)Session["Login"];
+            TableUsers user = (TableUsers)Session["User"];
             login.UserID = user.ID;
             login.LoginDate = (DateTime)Session["StartTime"];
             login.LogoutDate = DateTime.Now;
