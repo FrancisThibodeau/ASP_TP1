@@ -11,7 +11,11 @@ namespace TP1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            IMG_Avatar.ImageUrl = "~/Images/Anonymous.png";
+            if ((TableUsers)Session["User"] != null)
+                IMG_Avatar.ImageUrl = "~/Avatars/" + ((TableUsers)Session["User"]).Avatar + ".png";
+            else
+                IMG_Avatar.ImageUrl = "~/Images/Anonymous.png";
+
         }
 
         protected void TimerTime_Tick(object sender, EventArgs e)
