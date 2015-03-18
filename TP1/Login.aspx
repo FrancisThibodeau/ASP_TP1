@@ -31,12 +31,12 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="Button2" runat="server" Text="Button" />
+                <asp:Button ID="BTN_Inscription" runat="server" Text="Inscription" OnClick="BTN_Inscription_Click" />
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Button ID="Button3" runat="server" Text="Button" />
+                <asp:Button ID="BTN_Password" runat="server" Text="Mot de passe oublié" OnClick="BTN_Password_Click" />
             </td>
         </tr>
         <tr>

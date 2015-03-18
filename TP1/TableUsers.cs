@@ -71,5 +71,41 @@ namespace TP1
             img.Height = img.Width = 40;
             return img;
         }
+
+        public bool Exist(String Username)
+        {
+            QuerySQL("SELECT * FROM " + SQLTableName + " WHERE USERNAME = '" + Username + "'");
+            // if (reader.HasRows) GetValues();
+            return reader.HasRows;
+        }
+
+        public bool GoodPassword(String Username, String Password)
+        {
+            QuerySQL("SELECT * FROM " + SQLTableName + " WHERE USERNAME = '" + Username + "' AND PASSWORD = '" + Password + "'");
+            // if (reader.HasRows) GetValues();
+            return reader.HasRows;
+        }
+
+        public string GetEmailFromUsers(String Username)
+        {
+            QuerySQL("SELECT EMAIL FROM " + SQLTableName + " WHERE USERNAME = '" + Username + "'");
+            reader.Read();
+            return reader.GetString(0);
+        }
+
+        public string GetPasswordFromUsers(String Username)
+        {
+            QuerySQL("SELECT PASSWORD FROM " + SQLTableName + " WHERE USERNAME = '" + Username + "'");
+            reader.Read();
+            return reader.GetString(0);
+        }
+        public bool SelectByUserName(String USERNAME)
+        {
+            string sql = "SELECT * FROM " + SQLTableName + " WHERE USERNAME = '" + USERNAME + "'";
+            QuerySQL(sql);
+            if (reader.HasRows)
+                Next();
+            return reader.HasRows;
+        }
     }
 }

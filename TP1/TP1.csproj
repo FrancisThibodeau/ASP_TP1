@@ -88,9 +88,11 @@
     <Content Include="App_Data\MainDB.mdf" />
     <Content Include="ListerUsers.aspx" />
     <Content Include="Styles.css" />
+    <Content Include="UserRoom.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,6 +128,13 @@
     <Compile Include="SqlExpressUtilities.cs" />
     <Compile Include="TableLogins.cs" />
     <Compile Include="TableUsers.cs" />
+    <Compile Include="UserRoom.aspx.cs">
+      <DependentUpon>UserRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserRoom.aspx.designer.cs">
+      <DependentUpon>UserRoom.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

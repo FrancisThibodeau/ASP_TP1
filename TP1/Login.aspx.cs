@@ -37,7 +37,8 @@ namespace TP1
 
             // Temporaire
             RecordLogin();
-            Response.Redirect("Inscription.aspx");
+            Response.Redirect("UserRoom.aspx");
+
         }
 
         protected void CV_Username_ServerValidate(object source, ServerValidateEventArgs args)
@@ -92,6 +93,77 @@ namespace TP1
             if (ipAddress == "::1") // local host
                 ipAddress = "127.0.0.1";
             return ipAddress;
+        }
+
+        protected void BTN_Inscription_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inscription.aspx");
+        }
+
+        protected void BTN_Password_Click(object sender, EventArgs e)
+        {
+            // Nouvel objet EMail
+            Email eMail = new Email();
+
+            // Mon adresse, mon mot de passe, Nom de provenance
+            eMail.From = "fake.mail.asp@gmail.com";
+            eMail.Password = "514236789";
+            eMail.SenderName = "Admin";
+
+            // Chourot Stuff, Security Related 
+            eMail.Host = "smtp.gmail.com";
+            eMail.HostPort = 587;
+            eMail.SSLSecurity = true;
+
+            ///////////////////// Section a finioler ////////////////////////////////////
+            TableUsers users = new TableUsers((string)Application["MainDB"], this);
+            if (users.Exist(TB_Username.Text))
+            {
+                try
+                {
+                    users.GetEmailFromUsers(TB_Username.Text);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageErreur(ex.Message);
+                }
+
+                //eMail.to = Email associer au contenu du textbox username
+                eMail.To = users.GetEmailFromUsers(TB_Username.Text);
+                eMail.Subject = "Voici votre nouveau mot de passe";
+                //Generation d'un nombre random [0-1m] comme mot de passe
+                Random rnd = new Random();
+                int pass = rnd.Next(1000000);
+                // contenu du mail
+                eMail.Body = "Votre nouveau mot de passe est " + pass + ". Bonne journee!!";
+                // Verification
+                if (eMail.Send())
+                {
+                    ClientAlert(this, "This eMail has been sent with success!");
+                    TB_Username.Text = "";
+                    TB_Password.Text = "";
+                }
+                else
+                    ClientAlert(this, "An error occured while sendind this eMail!!!");
+            }
+            else
+            {
+                MessageErreur("Nom d'utilisateur incorrect");
+                TB_Username.Text = "";
+            }
+        }
+
+        private void MessageErreur(string message)
+        {
+            string script = "alert(\"" + message + "\");";
+            ScriptManager.RegisterStartupScript(this, GetType(),
+                                  "ServerControlScript", script, true);
+        }
+
+        public static void ClientAlert(System.Web.UI.Page page, string message)
+        {
+            page.ClientScript.RegisterStartupScript(page.GetType(), "alert", "alert('" + message + "');", true);
         }
     }
 }
