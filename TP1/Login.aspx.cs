@@ -37,7 +37,7 @@ namespace TP1
 
             // Temporaire
             RecordLogin();
-            Response.Redirect("UserRoom.aspx");
+            Response.Redirect("Index.aspx");
 
         }
 
@@ -102,6 +102,28 @@ namespace TP1
 
         protected void BTN_Password_Click(object sender, EventArgs e)
         {
+            ///////////////////// Section a finioler ////////////////////////////////////
+            TableUsers users = new TableUsers((string)Application["MainDB"], this);
+            if (users.SelectByFieldName("USERNAME", TB_Username.Text))
+            {
+                try
+                {
+                    EnvoyerPasswordEmail(users);
+                }
+                catch
+                {
+                    ClientAlert(this, "Wrong Username!!");
+                }
+            }
+            else
+            {
+                ClientAlert(this, "Wrong Username!!");
+                TB_Username.Text = "";
+                TB_Password.Text = "";
+            }
+        }
+        private void EnvoyerPasswordEmail(TableUsers connexion)
+        {
             // Nouvel objet EMail
             Email eMail = new Email();
 
@@ -114,52 +136,34 @@ namespace TP1
             eMail.Host = "smtp.gmail.com";
             eMail.HostPort = 587;
             eMail.SSLSecurity = true;
-
-            ///////////////////// Section a finioler ////////////////////////////////////
-            TableUsers users = new TableUsers((string)Application["MainDB"], this);
-            if (users.Exist(TB_Username.Text))
+            //eMail.to = Email associer au contenu du textbox username
+            eMail.To = connexion.Email;
+            eMail.Subject = "Voici votre nouveau mot de passe";
+            //Generation d'un nombre random [0-1m] comme mot de passe
+            Random rnd = new Random();
+            int pass = rnd.Next(1000000);
+            connexion.Password = pass.ToString();
+            connexion.Update();
+            // contenu du mail
+            eMail.Body = "Votre nouveau mot de passe est " + pass + ". Bonne journee!!";
+            // Verification
+            if (eMail.Send())
             {
-                try
-                {
-                    users.GetEmailFromUsers(TB_Username.Text);
-                }
-                catch (Exception ex)
-                {
-
-                    MessageErreur(ex.Message);
-                }
-
-                //eMail.to = Email associer au contenu du textbox username
-                eMail.To = users.GetEmailFromUsers(TB_Username.Text);
-                eMail.Subject = "Voici votre nouveau mot de passe";
-                //Generation d'un nombre random [0-1m] comme mot de passe
-                Random rnd = new Random();
-                int pass = rnd.Next(1000000);
-                // contenu du mail
-                eMail.Body = "Votre nouveau mot de passe est " + pass + ". Bonne journee!!";
-                // Verification
-                if (eMail.Send())
-                {
-                    ClientAlert(this, "This eMail has been sent with success!");
-                    TB_Username.Text = "";
-                    TB_Password.Text = "";
-                }
-                else
-                    ClientAlert(this, "An error occured while sendind this eMail!!!");
+                ClientAlert(this, "This eMail has been sent with success!");
+                TB_Username.Text = "";
+                TB_Password.Text = "";
             }
             else
-            {
-                MessageErreur("Nom d'utilisateur incorrect");
-                TB_Username.Text = "";
-            }
+                ClientAlert(this, "An error occured while sendind this eMail!!!");
+
         }
 
-        private void MessageErreur(string message)
-        {
-            string script = "alert(\"" + message + "\");";
-            ScriptManager.RegisterStartupScript(this, GetType(),
-                                  "ServerControlScript", script, true);
-        }
+        //private void MessageErreur(string message)
+        //{
+        //    string script = "alert(\"" + message + "\");";
+        //    ScriptManager.RegisterStartupScript(this, GetType(),
+        //                          "ServerControlScript", script, true);
+        //}
 
         public static void ClientAlert(System.Web.UI.Page page, string message)
         {

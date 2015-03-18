@@ -13,12 +13,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TP1</RootNamespace>
     <AssemblyName>TP1</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,22 +40,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MainDB_log.ldf">
@@ -86,9 +86,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="App_Data\MainDB.mdf" />
-    <Content Include="ListerUsers.aspx" />
+    <Content Include="Room.aspx" />
     <Content Include="Styles.css" />
-    <Content Include="UserRoom.aspx" />
+    <Content Include="Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,12 +103,12 @@
     <Compile Include="Inscription.aspx.designer.cs">
       <DependentUpon>Inscription.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListerUsers.aspx.cs">
-      <DependentUpon>ListerUsers.aspx</DependentUpon>
+    <Compile Include="Room.aspx.cs">
+      <DependentUpon>Room.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListerUsers.aspx.designer.cs">
-      <DependentUpon>ListerUsers.aspx</DependentUpon>
+    <Compile Include="Room.aspx.designer.cs">
+      <DependentUpon>Room.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -128,12 +128,12 @@
     <Compile Include="SqlExpressUtilities.cs" />
     <Compile Include="TableLogins.cs" />
     <Compile Include="TableUsers.cs" />
-    <Compile Include="UserRoom.aspx.cs">
-      <DependentUpon>UserRoom.aspx</DependentUpon>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserRoom.aspx.designer.cs">
-      <DependentUpon>UserRoom.aspx</DependentUpon>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
