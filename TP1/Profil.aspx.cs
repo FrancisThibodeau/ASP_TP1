@@ -11,12 +11,30 @@ namespace TP1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Modifier votre profil";
 
+            if (!Page.IsPostBack)
+            {
+                LoadUserInfo();
+            }
         }
 
         protected void BTN_Update_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void LoadUserInfo()
+        {
+            TableUsers user = (TableUsers)Session["User"];
+
+            TB_Fullname.Text = user.Fullname;
+            TB_Username.Text = user.Username;
+            TB_Password.Text = TB_PasswordConfirm.Text = user.Password;
+            TB_Email.Text = TB_EmailConfirm.Text = user.Email;
+
+            if (user.Avatar != "")
+                IMG_PreviewAvatar.ImageUrl = @"~\Avatars\" + user.Avatar + ".png";
         }
 
         protected void CV_Fullname_ServerValidate(object source, ServerValidateEventArgs args)

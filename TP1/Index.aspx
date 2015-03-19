@@ -6,7 +6,7 @@
     <div>
         <table>
             <tr>
-                <td><asp:Button ID="BTN_Profil" runat="server" Text="Modifier votre profil..." /></td>
+                <td><asp:Button ID="BTN_Profil" runat="server" Text="Modifier votre profil..." OnClick="BTN_Profil_Click" /></td>
             </tr>
             <tr>
                 <td><asp:Button ID="BTN_EnLigne" runat="server" Text="Usagers en ligne..." /></td>

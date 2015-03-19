@@ -48,5 +48,10 @@ namespace TP1
         {
             LogoutUser();
         }
+
+        protected void BTN_Profil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Profil.aspx");
+        }
     }
 }
