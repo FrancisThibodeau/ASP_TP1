@@ -57,13 +57,13 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:Button ID="BTN_Inscrire" runat="server" OnClick="BTN_Inscrire_Click" Text="S'inscrire..." ValidationGroup="Inscription" /></td>
+                                <asp:Button ID="BTN_Inscrire" runat="server" OnClick="BTN_Inscrire_Click" Text="S'inscrire..." ValidationGroup="Inscription" CssClass="SubmitButton"/></td>
                         </tr>
                         <!-- Bouton Annuler -->
                         <tr>
                             <td></td>
                             <td>
-                                <asp:Button ID="BTN_Annuler" runat="server" Text="Annuler..." OnClick="BTN_Annuler_Click" /></td>
+                                <asp:Button ID="BTN_Annuler" runat="server" Text="Annuler..." OnClick="BTN_Annuler_Click" CssClass="SubmitButton"/></td>
                         </tr>
                     </table>
                 </td>
