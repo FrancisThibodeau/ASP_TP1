@@ -1,33 +1,61 @@
-﻿#LBL_Titre {
-    font: bold 28px impact;
+﻿.HeaderContent {
+    width: 100%;
+    padding: 0px;
 }
+
+    .HeaderContent table, .HeaderContent tr, .HeaderContent td {
+        border-collapse: collapse;
+    }
+        /* Page_Title*/
+        .HeaderContent td:nth-of-type(1) {
+            width: 75%;
+            font: bold 28px Verdana;
+        }
+        /* Username*/
+        .HeaderContent td:nth-of-type(2) {
+            width: 20%;
+            font-family: Arial;
+            font-size: 14px;
+        }
+        /* Avatar*/
+        .HeaderContent td:nth-of-type(3) {
+            width: 10%;
+        }
 
 #IMG_Avatar {
     height: 100px;
     width: 100px;
 }
 
-.HeaderContent {
-    width: 100%;
-    padding: 0px;
+#IMG_PreviewAvatar {
+    height: 150px;
+    width: 150px;
 }
 
-.HeaderContent table,
-.HeaderContent tr,
-.HeaderContent td {
-    border-collapse: collapse;
-}
-/* Page_Title*/
-.HeaderContent td:nth-of-type(1) {
-    width: 75%;
-}
-/* Username*/
-.HeaderContent td:nth-of-type(2) {
-    width: 20%;
+.LoginForm {
     font-family: Arial;
-    font-size: 14px;
+    font-size: 12px;
+    margin: auto;
+    width: 350px;
+    background-color: lightgray;
+    padding: 2px;
+    border: 1px solid black;
 }
-/* Avatar*/
-.HeaderContent td:nth-of-type(3) {
-    width: 10%;
+
+.InscriptionForm {
+    font-family: Arial;
+    font-size: 12px;
+    margin: auto;
+    width: 550px;
+    background-color: lightgray;
+    padding: 5px;
+    border: 1px solid black;
 }
+
+    .InscriptionForm td:nth-of-type(1) {
+        width: 60%;
+    }
+
+    .InscriptionForm td:nth-of-type(2) {
+        width: 40%;
+    }
