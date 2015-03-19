@@ -15,7 +15,7 @@
                 <td><asp:Button ID="BTN_Journal" runat="server" Text="Journal des visites" /></td>
             </tr>
             <tr>
-                <td><asp:Button ID="BTN_Logout" runat="server" Text="Déconnexion" /></td>
+                <td><asp:Button ID="BTN_Logout" runat="server" Text="Déconnexion" OnClick="BTN_Logout_Click" /></td>
             </tr>
         </table>
     </div>

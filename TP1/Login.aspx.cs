@@ -35,6 +35,8 @@ namespace TP1
             // Création d'une TableLogins pour cette session
             Session["Login"] = new TableLogins((String)Application["MainDB"], this);
 
+            Session["StartTime"] = DateTime.Now;
+
             Response.Redirect("Index.aspx");
 
         }
@@ -83,29 +85,6 @@ namespace TP1
             }
 
             return valide;
-        }
-
-        // Cette fonction va dans le logout, je l'ai mis là pour la tester
-        private void RecordLogin()
-        {
-            TableLogins login = (TableLogins)Session["Login"];
-            TableUsers user = (TableUsers)Session["User"];
-            login.UserID = user.ID;
-            login.LoginDate = (DateTime)Session["StartTime"];
-            login.LogoutDate = DateTime.Now;
-            login.IPAddress = GetUserIP(); // "GetUserIp"
-            login.Insert();
-        }
-
-        public string GetUserIP()
-        {
-            string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            if (!string.IsNullOrEmpty(ipList))
-                return ipList.Split(',')[0];
-            string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
-            if (ipAddress == "::1") // local host
-                ipAddress = "127.0.0.1";
-            return ipAddress;
         }
 
         protected void BTN_Inscription_Click(object sender, EventArgs e)
