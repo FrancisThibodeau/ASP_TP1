@@ -6,15 +6,20 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+
+    <link href="Styles.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <link type="text/css" rel="Styles.css" />
+
     <form id="form1" runat="server">
 
         <asp:ScriptManager ID="MyScriptManager" runat="server"></asp:ScriptManager>
 
-        <asp:Timer runat="server" ID="TimerTime" Interval="1000" OnTick="TimerTime_Tick"></asp:Timer>
+        <asp:Timer runat="server" ID="TimerTime" Interval="99999999" OnTick="TimerTime_Tick"></asp:Timer>
 
         <asp:UpdatePanel ID="UPN_Time" runat="server">
             <Triggers>
@@ -22,10 +27,14 @@
             </Triggers>
 
             <ContentTemplate>
-                <div>
-                    <asp:Label ID="LBL_Titre" runat="server" Text="Titre"></asp:Label>
-                    <asp:Label ID="LBL_User" runat="server" Text="Usager"></asp:Label>
-                    <asp:Image ID="IMG_Avatar" runat="server" Height="100" Width="100" />
+                <div class="HeaderContent">
+                    <table>
+                        <tr>
+                            <td><asp:Label ID="LBL_Titre" runat="server" Text="Titre"></asp:Label></td>
+                            <td><asp:Label ID="LBL_User" runat="server" Text="Usager"></asp:Label></td>
+                            <td><asp:Image ID="IMG_Avatar" runat="server"/></td>
+                        </tr>
+                    </table>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

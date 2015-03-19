@@ -1,15 +1,33 @@
-﻿table {
+﻿#LBL_Titre {
+    font: bold 28px impact;
+}
+
+#IMG_Avatar {
+    height: 100px;
+    width: 100px;
+}
+
+.HeaderContent {
+    width: 100%;
+    padding: 0px;
+}
+
+.HeaderContent table,
+.HeaderContent tr,
+.HeaderContent td {
     border-collapse: collapse;
 }
-
-table, th, td {
-    border: 1px solid black;
-    font-family: Arial;
-    font-size: 12px;
-    padding: 5px;
+/* Page_Title*/
+.HeaderContent td:nth-of-type(1) {
+    width: 75%;
 }
-
-table tr:first-child td {
-    color: black;
-    background-color: lightgray;
+/* Username*/
+.HeaderContent td:nth-of-type(2) {
+    width: 20%;
+    font-family: Arial;
+    font-size: 14px;
+}
+/* Avatar*/
+.HeaderContent td:nth-of-type(3) {
+    width: 10%;
 }
