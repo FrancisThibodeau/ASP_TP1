@@ -110,7 +110,8 @@
                         <!---- Bouton Choisir ---->
                         <tr>
                             <td>
-                                <asp:FileUpload ID="FU_Avatar" runat="server" ClientIDMode="Static" onchange="PreLoadImage();" /></td>
+                                <asp:FileUpload ID="FU_Avatar" runat="server" ClientIDMode="Static" onchange="PreLoadImage();" />
+                            </td>
                         </tr>
                     </table>
                 </td>
@@ -182,7 +183,8 @@
                         ValidationGroup="Inscription"
                         ControlToValidate="TB_Captcha"
                         OnServerValidate="CV_Captcha_ServerValidate"
-                        ValidateEmptyText="True">
+                        ValidateEmptyText="True"
+                        Display="None">
                     </asp:CustomValidator>
                 </td>
             </tr>
