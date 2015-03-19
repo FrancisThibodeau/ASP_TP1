@@ -146,5 +146,10 @@ namespace TP1
             }
         }
 
+        protected void BTN_Annuler_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index.aspx");
+        }
+
     }
 }

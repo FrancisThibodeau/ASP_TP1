@@ -210,5 +210,10 @@ namespace TP1
             IMGCaptcha.ImageUrl = "~/Captcha.png?ID=" + DateTime.Now.ToString();
             PN_Captcha.Update();
         }
+
+        protected void BTN_Annuler_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
     }
 }

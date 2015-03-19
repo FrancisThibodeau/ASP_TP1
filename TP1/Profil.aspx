@@ -62,7 +62,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:Button ID="BTN_Annuler" runat="server" Text="Annuler..." /></td>
+                                <asp:Button ID="BTN_Annuler" runat="server" Text="Annuler..." OnClick="BTN_Annuler_Click" /></td>
                         </tr>
                     </table>
                 </td>
