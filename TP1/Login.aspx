@@ -26,17 +26,17 @@
         <table style="width: 100%;">
             <tr>
                 <td>
-                    <asp:Button ID="BTN_Login" runat="server" OnClick="BTN_Login_Click" ValidationGroup="Login" Text="Login" />
+                    <asp:Button ID="BTN_Login" runat="server" OnClick="BTN_Login_Click" ValidationGroup="Login" Text="Login" CssClass="SubmitButton"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="BTN_Inscription" runat="server" Text="Inscription" OnClick="BTN_Inscription_Click" />
+                    <asp:Button ID="BTN_Inscription" runat="server" Text="Inscription" OnClick="BTN_Inscription_Click" CssClass="SubmitButton" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="BTN_Password" runat="server" Text="Mot de passe oublié" OnClick="BTN_Password_Click" />
+                    <asp:Button ID="BTN_Password" runat="server" Text="Mot de passe oublié" OnClick="BTN_Password_Click" CssClass="SubmitButton"/>
                 </td>
             </tr>
             <tr>

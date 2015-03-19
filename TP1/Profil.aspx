@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
-        <div id="Profil">
+        <div class="InscriptionForm">
         <script type="text/javascript" src="ClientFormUtilities.js"></script>
         <table>
             <tr>
@@ -56,13 +56,13 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:Button ID="BTN_Update" runat="server" Text="Mettre à jour..." ValidationGroup="Profil" OnClick="BTN_Update_Click" /></td>
+                                <asp:Button ID="BTN_Update" runat="server" Text="Mettre à jour..." ValidationGroup="Profil" OnClick="BTN_Update_Click" CssClass="SubmitButton"/></td>
                         </tr>
                         <!-- Bouton Annuler -->
                         <tr>
                             <td></td>
                             <td>
-                                <asp:Button ID="BTN_Annuler" runat="server" Text="Annuler..." OnClick="BTN_Annuler_Click" /></td>
+                                <asp:Button ID="BTN_Annuler" runat="server" Text="Annuler..." OnClick="BTN_Annuler_Click" CssClass="SubmitButton"/></td>
                         </tr>
                     </table>
                 </td>
