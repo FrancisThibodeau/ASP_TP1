@@ -57,9 +57,17 @@ namespace TP1
         }
         protected void CV_Username_ServerValidate(object source, ServerValidateEventArgs args)
         {
+            TableUsers user = new TableUsers((String)Application["MainDB"], this);
+
             if (TB_Username.Text == "")
             {
                 TB_Username.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
+                args.IsValid = false;
+            }
+            else if (user.SelectByFieldName("USERNAME", TB_Username.Text))
+            {
+                TB_Username.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
+                CV_Username.ErrorMessage = "Ce nom d'usager est déjà pris";
                 args.IsValid = false;
             }
             else
