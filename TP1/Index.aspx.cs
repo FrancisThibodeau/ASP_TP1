@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace TP1
 {
-    public partial class UserRoom : System.Web.UI.Page
+    public partial class Index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Acceuil";
         }
 
         // Cette fonction va dans le logout, je l'ai mis là pour la tester

@@ -15,7 +15,7 @@ namespace TP1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Login";
         }
 
         protected void BTN_Login_Click(object sender, EventArgs e)
@@ -38,7 +38,6 @@ namespace TP1
             Session["StartTime"] = DateTime.Now;
 
             Response.Redirect("Index.aspx");
-
         }
 
         protected void CV_Username_ServerValidate(object source, ServerValidateEventArgs args)

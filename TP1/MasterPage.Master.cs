@@ -12,9 +12,15 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             if ((TableUsers)Session["User"] != null)
+            {
                 IMG_Avatar.ImageUrl = "~/Avatars/" + ((TableUsers)Session["User"]).Avatar + ".png";
+                LBL_User.Text = ((TableUsers)Session["User"]).Fullname;
+            }
             else
+            {
                 IMG_Avatar.ImageUrl = "~/Images/Anonymous.png";
+                LBL_User.Text = "Anonymous";
+            }
 
         }
 

@@ -10,7 +10,7 @@
 namespace TP1 {
     
     
-    public partial class UserRoom {
+    public partial class Index {
         
         /// <summary>
         /// Contrôle BTN_Profil.
