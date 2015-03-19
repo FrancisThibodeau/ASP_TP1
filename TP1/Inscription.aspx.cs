@@ -13,9 +13,12 @@ namespace TP1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            IMG_PreviewAvatar.ImageUrl = "~/Images/Anonymous.png";
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Inscription";
+
+
             if (!Page.IsPostBack)
             {
+                IMG_PreviewAvatar.ImageUrl = "~/Images/Anonymous.png";
                 Session["captcha"] = BuildCaptcha();
             }
         }

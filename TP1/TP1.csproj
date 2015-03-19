@@ -86,6 +86,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="App_Data\MainDB.mdf" />
+    <Content Include="Profil.aspx" />
     <Content Include="Room.aspx" />
     <Content Include="Styles.css" />
     <Content Include="Index.aspx" />
@@ -102,6 +103,13 @@
     </Compile>
     <Compile Include="Inscription.aspx.designer.cs">
       <DependentUpon>Inscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profil.aspx.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profil.aspx.designer.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Room.aspx.cs">
       <DependentUpon>Room.aspx</DependentUpon>

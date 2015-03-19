@@ -11,6 +11,7 @@ namespace TP1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Room";
             AfficherListe();
         }
 
