@@ -35,8 +35,6 @@ namespace TP1
             // Création d'une TableLogins pour cette session
             Session["Login"] = new TableLogins((String)Application["MainDB"], this);
 
-            // Temporaire
-            RecordLogin();
             Response.Redirect("Index.aspx");
 
         }
@@ -61,15 +59,30 @@ namespace TP1
                 TB_Password.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
                 args.IsValid = false;
             }
-            //else if (user.Password == TB_Password.Text)
-            //{
-            //    
-            //}
+            else if (!ValiderMotDePasse())
+            {
+                TB_Password.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
+                args.IsValid = false;
+            }
             else
             {
                 TB_Password.BackColor = System.Drawing.Color.White;
                 args.IsValid = true;
             }
+        }
+
+        private bool ValiderMotDePasse()
+        {
+            bool valide = false;
+
+            TableUsers user = new TableUsers((String)Application["MainDB"], this);
+            
+            if (user.SelectByFieldName("USERNAME", TB_Username.Text))
+            {
+                valide = user.Password == TB_Password.Text;
+            }
+
+            return valide;
         }
 
         // Cette fonction va dans le logout, je l'ai mis là pour la tester

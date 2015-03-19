@@ -140,7 +140,7 @@ namespace TP1
             if (Page.IsValid)
             {
                 AddUser();
-                Response.Redirect("ListerUsers.aspx");
+                Response.Redirect("Login.aspx");
             }
         }
 

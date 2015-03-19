@@ -61,7 +61,7 @@
                         ControlToValidate="TB_Password"
                         ErrorMessage="Mot de passe"
                         OnServerValidate="CV_Password_ServerValidate"
-                        ValidationGroup="Inscription"
+                        ValidationGroup="Login"
                         ValidateEmptyText="true"
                         Display="None">
                     </asp:CustomValidator>
