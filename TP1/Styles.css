@@ -47,7 +47,7 @@
     font-size: 12px;
     margin: auto;
     width: 625px;
-    background-color:lightgreen;
+    background-color: lightgreen;
     padding: 5px;
     border: 1px solid black;
 }
@@ -62,6 +62,29 @@
     background-color: yellowgreen;
 }
 
-.SubmitButton:hover {
-    background-color: chartreuse;
+    .SubmitButton:hover {
+        background-color: chartreuse;
+    }
+
+.gridview table {
+    border-collapse: collapse;
 }
+    
+    .gridview td {
+        border: 1px solid;
+        border-color: yellowgreen;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+    .gridview th {
+        border: 1px solid black;
+        font-family: Arial;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .gridview table tr:first-child td {
+        color: black;
+        background-color: lightgreen;
+    }
