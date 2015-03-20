@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -126,11 +127,24 @@ namespace TP1
                 TB_Email.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
                 args.IsValid = false;
             }
+            else if (!ValiderEmail())
+            {
+                TB_Email.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
+                CV_Email.ErrorMessage = "Le courriel est syntaxiquement invalide!";
+                args.IsValid = false;
+            }
             else
             {
                 TB_Email.BackColor = System.Drawing.Color.White;
                 args.IsValid = true;
             }
+        }
+
+        private bool ValiderEmail()
+        {
+            Regex rgx = new Regex(@"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b", RegexOptions.IgnoreCase);
+            Match match = rgx.Match(TB_Email.Text);
+            return match.Value == TB_Email.Text;
         }
         protected void CV_EmailConfirm_ServerValidate(object source, ServerValidateEventArgs args)
         {
