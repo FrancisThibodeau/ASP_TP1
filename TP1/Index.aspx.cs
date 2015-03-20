@@ -40,6 +40,8 @@ namespace TP1
         private void LogoutUser()
         {
             RecordLogin();
+            ((TableUsers)Session["User"]).Online = 0;
+            ((TableUsers)Session["User"]).Update();
             Session.Abandon();
             Response.Redirect("Login.aspx");
         }
