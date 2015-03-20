@@ -22,5 +22,10 @@ namespace TP1
             table.MakeGridView(PN_GridView, "");
             table.EndQuerySQL();
         }
+
+        protected void BTN_Retour_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index.aspx");
+        }
     }
 }

@@ -53,5 +53,10 @@ namespace TP1
         {
             Response.Redirect("Profil.aspx");
         }
+
+        protected void BTN_EnLigne_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Room.aspx");
+        }
     }
 }

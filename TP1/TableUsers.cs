@@ -8,6 +8,7 @@ namespace TP1
     public class TableUsers : SqlExpressUtilities.SqlExpressWrapper
     {
         public long ID { get; set; }
+        public int Online { get; set; }
         public String Username { get; set; }
         public String Password { get; set; }
         public String Fullname { get; set; }
@@ -23,6 +24,7 @@ namespace TP1
         public override void GetValues()
         {
             ID = long.Parse(this["ID"]);
+            Online = int.Parse(this["ONLINE"]);
             Username = this["USERNAME"];
             Password = this["PASSWORD"];
             Fullname = this["FULLNAME"];
@@ -33,13 +35,14 @@ namespace TP1
         public override void InitColumnsVisibility()
         {
             base.InitColumnsVisibility();
+            SetColumnVisibility("ID", false);
             SetColumnVisibility("PASSWORD", false);
         }
 
         public override void InitColumnsTitles()
         {
             base.InitColumnsTitles();
-            SetColumnTitle("ID", "Id");
+            SetColumnTitle("ONLINE", "En ligne");
             SetColumnTitle("USERNAME", "Nom d'usager");
             SetColumnTitle("FULLNAME", "Nom complet");
             SetColumnTitle("EMAIL", "Courriel");
@@ -50,28 +53,43 @@ namespace TP1
         {
             base.InitCellsContentDelegate();
             SetCellContentDelegate("AVATAR", ContentDelegateAvatar);
+            SetCellContentDelegate("ONLINE", ContentDelegateOnline);
         }
 
         public override void Insert()
         {
-            InsertRecord(Username,Password,Fullname,Email,Avatar);
+            InsertRecord(Online,Username,Password,Fullname,Email,Avatar);
         }
 
         System.Web.UI.WebControls.WebControl ContentDelegateAvatar()
         {
             System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
+
             if (Avatar != "")
-            {
                 img.ImageUrl = "~/Avatars/" + Avatar + ".png";
-            }
             else
-            {
                 img.ImageUrl = "~/Images/Anonymous.png";
-            }
+
             img.Height = img.Width = 40;
             return img;
         }
 
+        System.Web.UI.WebControls.WebControl ContentDelegateOnline()
+        {
+            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
+
+            if (Online != 0)
+                img.ImageUrl = "~/Images/OnLine.png";
+            else
+                img.ImageUrl = "~/Images/OffLine.png";
+
+            img.Height = img.Width = 40;
+            return img;
+        }
+        public override void Update()
+        {
+            UpdateRecord(ID, Online, Username, Password,Fullname,Email,Avatar);
+        }
         //public bool Exist(String Username)
         //{
         //    QuerySQL("SELECT * FROM " + SQLTableName + " WHERE USERNAME = '" + Username + "'");
@@ -107,9 +125,6 @@ namespace TP1
         //        Next();
         //    return reader.HasRows;
         //}
-        public override void Update()
-        {
-            UpdateRecord(ID, Username, Password,Fullname,Email,Avatar);
-        }
+
     }
 }

@@ -14,5 +14,11 @@ namespace TP1
             string DB_Path = Server.MapPath(@"~\App_Data\MainDB.mdf");
             Application["MainDB"] = @"Data Source=(LocalDB)\v11.0;AttachDbFilename='" + DB_Path + "';Integrated Security=True";
         }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            ((TableUsers)Session["User"]).Online = 0;
+            ((TableUsers)Session["User"]).Update();
+        }
     }
 }

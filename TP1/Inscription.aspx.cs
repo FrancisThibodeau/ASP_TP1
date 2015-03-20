@@ -37,6 +37,7 @@ namespace TP1
                 FU_Avatar.SaveAs(Avatar_Path);
             }
 
+            user.Online = 0;
             user.Username = TB_Username.Text;
             user.Password = TB_Password.Text;
             user.Fullname = TB_Fullname.Text;

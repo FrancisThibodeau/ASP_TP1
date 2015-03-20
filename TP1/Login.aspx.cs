@@ -35,6 +35,10 @@ namespace TP1
             // Création d'une TableLogins pour cette session
             Session["Login"] = new TableLogins((String)Application["MainDB"], this);
 
+            // Flag l'usager en ligne
+            ((TableUsers)Session["User"]).Online = 1;
+            ((TableUsers)Session["User"]).Update();
+
             Session["StartTime"] = DateTime.Now;
 
             Response.Redirect("Index.aspx");
