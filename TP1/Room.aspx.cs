@@ -12,6 +12,12 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Room";
+
+            Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
+
+            if (Session.IsNewSession)
+                Server.Transfer("Login.aspx");
+
             AfficherListe();
         }
 

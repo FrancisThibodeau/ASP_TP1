@@ -19,6 +19,7 @@ namespace TP1
         {
             ((TableUsers)Session["User"]).Online = 0;
             ((TableUsers)Session["User"]).Update();
+            ((TableUsers)Session["User"]).EndQuerySQL();
         }
     }
 }

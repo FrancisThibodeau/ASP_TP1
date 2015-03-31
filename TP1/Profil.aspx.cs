@@ -18,6 +18,11 @@ namespace TP1
 
             user = (TableUsers)Session["User"];
 
+            Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
+
+            if (Session.IsNewSession)
+                Server.Transfer("Login.aspx");
+
             if (!Page.IsPostBack)
             {
                 LoadUserInfo();

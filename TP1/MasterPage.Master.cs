@@ -22,6 +22,7 @@ namespace TP1
                 LBL_User.Text = "Anonymous";
             }
 
+            Session.Timeout = 1;
         }
 
         protected void TimerTime_Tick(object sender, EventArgs e)
