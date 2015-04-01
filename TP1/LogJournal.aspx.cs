@@ -9,7 +9,7 @@ namespace TP1
 {
     public partial class LogJournal : System.Web.UI.Page
     {
-        public static bool Admin = false;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,8 +20,10 @@ namespace TP1
         private void AfficherListe()
         {
             TableLogins table = new TableLogins((String)Application["MainDB"], this);
-            //if (Session["UserName"].ToString() == "admin")
-                Admin = true;
+            //if (Session["UserID"].ToString() == "admin")
+                table.Admin = true;
+            //else
+            //    table.UserName = Session["UserName"].ToString();
 
             table.SelectAll();
             table.MakeGridView(PN_GridView, "");
