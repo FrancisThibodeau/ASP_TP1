@@ -5,13 +5,13 @@ using System.Web;
 
 namespace TP1
 {
-    public class TableThreadAccess : SqlExpressUtilities.SqlExpressWrapper
+    public class TableThreadsAccess : SqlExpressUtilities.SqlExpressWrapper
     {
         public long ID { get; set; }
         public long ThreadID { get; set; }
         public long UserID { get; set; }
 
-        public TableThreadAccess(String connexionString, System.Web.UI.Page page)
+        public TableThreadsAccess(String connexionString, System.Web.UI.Page page)
             : base(connexionString, page)
         {
             SQLTableName = "THREADS_ACCESS";
