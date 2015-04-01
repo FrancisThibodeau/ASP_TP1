@@ -20,10 +20,11 @@ namespace TP1
         private void AfficherListe()
         {
             TableLogins table = new TableLogins((String)Application["MainDB"], this);
-            //if (Session["UserID"].ToString() == "admin")
+            //if (Session["UserName"].ToString() == "ADMIN")
+            if (((TableUsers)Session["UserName"]).Username == "ADMIN")
                 table.Admin = true;
-            //else
-            //    table.UserName = Session["UserName"].ToString();
+            else
+                table.UserName = Session["User"].ToString();
 
             table.SelectAll();
             table.MakeGridView(PN_GridView, "");
