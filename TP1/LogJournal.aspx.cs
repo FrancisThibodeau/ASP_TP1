@@ -21,12 +21,11 @@ namespace TP1
         {
             TableLogins table = new TableLogins((String)Application["MainDB"], this);
             //if (Session["UserName"].ToString() == "ADMIN")
-            if (((TableUsers)Session["UserName"]).Username == "ADMIN")
-                table.Admin = true;
+            if (((TableUsers)Session["User"]).Username == "ADMIN")
+                table.SelectAll();
             else
-                table.UserName = Session["User"].ToString();
+                table.SelectByFieldName("UserName", ((TableUsers)Session["User"]).Username);
 
-            table.SelectAll();
             table.MakeGridView(PN_GridView, "");
             table.EndQuerySQL();
         }

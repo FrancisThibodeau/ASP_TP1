@@ -19,7 +19,6 @@ namespace TP1
         public String Email { get; set; }
         public String Avatar { get; set; }
 
-        public  bool Admin = false;
 
         public TableLogins(String connexionString, System.Web.UI.Page page)
             : base(connexionString, page)
@@ -43,14 +42,27 @@ namespace TP1
         public override bool SelectAll(string orderBy = "")
         {
             string sql = "SELECT Logins.ID,UserId,LoginDate,LogoutDate,IPAddress,FullName,UserName,Email,Avatar FROM " + SQLTableName + " inner join Users on Users.ID = Logins.UserID ";
-            if (!Admin)
-            {
-                sql += " where UserName = '" + UserName + "'";
-            }
 
             if (orderBy != "")
                 sql += " ORDER BY " + orderBy;
             QuerySQL(sql);
+            return reader.HasRows;
+        }
+
+        public override bool SelectByFieldName(String FieldName, object value)
+        {
+            string SQL = "SELECT Logins.ID,UserId,LoginDate,LogoutDate,IPAddress,FullName,UserName,Email,Avatar FROM " + SQLTableName + " inner join Users on Users.ID = Logins.UserID WHERE " + FieldName + " = ";
+            Type type = value.GetType();
+            if (SqlExpressUtilities.SQLHelper.IsNumericType(type))
+                SQL += value.ToString().Replace(',', '.');
+            else
+                if (type == typeof(DateTime))
+                    SQL += "'" + SqlExpressUtilities.SQLHelper.DateSQLFormat((DateTime)value) + "'";
+                else
+                    SQL += "'" + SqlExpressUtilities.SQLHelper.PrepareForSql(value.ToString()) + "'";
+            QuerySQL(SQL);
+            if (reader.HasRows)
+                Next();
             return reader.HasRows;
         }
 

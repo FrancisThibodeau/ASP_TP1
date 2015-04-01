@@ -257,7 +257,7 @@ namespace SqlExpressUtilities
             return reader.HasRows;
         }
 
-        public bool SelectByFieldName(String FieldName, object value)
+        public virtual bool SelectByFieldName(String FieldName, object value)
         {
             string SQL = "SELECT * FROM " + SQLTableName + " WHERE " + FieldName + " = ";
             Type type = value.GetType();
