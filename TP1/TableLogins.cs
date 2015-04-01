@@ -70,5 +70,102 @@ namespace TP1
         {
             InsertRecord(UserID, LoginDate, LogoutDate, IPAddress);
         }
+
+        public override void InitCellsContentDelegate()
+        {
+            base.InitCellsContentDelegate();
+            SetCellContentDelegate("ID", ContentDelegateID);
+            SetCellContentDelegate("UserID", ContentDelegateUserID);
+            SetCellContentDelegate("LoginDate", ContentDelegateLoginDate);
+            SetCellContentDelegate("LogoutDate", ContentDelegateLogoutDate);
+            SetCellContentDelegate("IpAddress", ContentDelegateIPAddress);
+            SetCellContentDelegate("FullName", ContentDelegateFullName);
+            SetCellContentDelegate("UserName", ContentDelegateUserName);
+            SetCellContentDelegate("Email", ContentDelegateEmail);
+            SetCellContentDelegate("Avatar", ContentDelegateAvatar);
+        }
+
+        public override void InitColumnsSortEnable()
+        {
+            base.InitColumnsSortEnable();
+            SetColumnSortEnable("ID", false);
+        }
+
+        public override void InitColumnsTitles()
+        {
+            base.InitColumnsTitles();
+            SetColumnTitle("ID", "Id");
+            SetColumnTitle("UserID", "User Id");
+            SetColumnTitle("LoginDate", "Login date");
+            SetColumnTitle("LogoutDate", "Logout date");
+            SetColumnTitle("IpAddress", "Ip Adresse");
+            SetColumnTitle("UserName", "UserName");
+            SetColumnTitle("FullName", "Nom complet");
+            SetColumnTitle("Email", "Email");
+            SetColumnTitle("Avatar", "Avatar");
+        }
+
+        System.Web.UI.WebControls.WebControl ContentDelegateID()
+        {
+            Label lbl = new Label();
+            lbl.Text = ID.ToString();
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateUserID()
+        {
+            Label lbl = new Label();
+            lbl.Text = UserID.ToString();
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateLoginDate()
+        {
+            Label lbl = new Label();
+            lbl.Text = LoginDate.ToString();
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateLogoutDate()
+        {
+            Label lbl = new Label();
+            lbl.Text = LogoutDate.ToString();
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateIPAddress()
+        {
+            Label lbl = new Label();
+            lbl.Text = IPAddress;
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateUserName()
+        {
+            Label lbl = new Label();
+            lbl.Text = UserName;
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateFullName()
+        {
+            Label lbl = new Label();
+            lbl.Text = FullName;
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateEmail()
+        {
+            Label lbl = new Label();
+            lbl.Text = Email;
+            return lbl;
+        }
+        System.Web.UI.WebControls.WebControl ContentDelegateAvatar()
+        {
+            Image img = new Image();
+            if (Avatar != "")
+            {
+                img.ImageUrl = "Avatars/" + Avatar + ".png";
+            }
+            else
+            {
+                img.ImageUrl = "Images/Anonymous.png";
+            }
+            img.Width = img.Height = 40;
+            return img;
+        }
     }
 }
