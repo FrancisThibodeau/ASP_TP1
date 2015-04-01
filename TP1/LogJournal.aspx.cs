@@ -11,7 +11,30 @@ namespace TP1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Room";
+            AfficherListe();
+        }
 
+        private void AfficherListe()
+        {
+            TableUsers table = new TableUsers((String)Application["MainDB"], this);
+            table.SelectAll();
+            //table.MakeGridView(PN_GridView, "");
+            table.EndQuerySQL();
+        }
+
+       // public virtual bool SelectAll(string orderBy = "")
+       // {
+       //     string sql = "SELECT * FROM " + SQLTableName;
+       //     if (orderBy != "")
+       //         sql += " ORDER BY " + orderBy;
+       //     QuerySQL(sql);
+       //     return reader.HasRows;
+       // }
+
+        protected void BTN_Retour_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index.aspx");
         }
     }
 }

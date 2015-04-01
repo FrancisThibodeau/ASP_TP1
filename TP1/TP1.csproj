@@ -75,6 +75,7 @@
     <Content Include="Images\stopCommunication.jpg" />
     <Content Include="Inscription.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="LogJournal.aspx" />
     <Content Include="MasterPage.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="Inscription.aspx.designer.cs">
       <DependentUpon>Inscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogJournal.aspx.cs">
+      <DependentUpon>LogJournal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogJournal.aspx.designer.cs">
+      <DependentUpon>LogJournal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profil.aspx.cs">
       <DependentUpon>Profil.aspx</DependentUpon>
