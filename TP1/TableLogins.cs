@@ -28,6 +28,20 @@ namespace TP1
             IPAddress = this["IPADDRESS"];
         }
 
+        public override bool SelectAll(string orderBy = "")
+        {
+            string sql = "SELECT Logins.ID,UserId,LoginDate,LogoutDate,IPAddress,FullName,UserName,Email,Avatar FROM " + SQLTableName + " inner join Users on Users.ID = Logins.UserID ";
+            if (!LogJournal.Admin)
+            {
+                sql += " where UserName = '" + UserID + "'";
+            }
+
+            if (orderBy != "")
+                sql += " ORDER BY " + orderBy;
+            QuerySQL(sql);
+            return reader.HasRows;
+        }
+
         public override void Insert()
         {
             InsertRecord(UserID, LoginDate, LogoutDate, IPAddress);

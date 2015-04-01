@@ -16,7 +16,7 @@ namespace TP1
         public TableThreadsMessages(String connexionString, System.Web.UI.Page page)
             : base(connexionString, page)
         {
-            SQLTableName = "THREADS_MESSAGES"
+            SQLTableName = "THREADS_MESSAGES";
         }
 
         public override void GetValues()
