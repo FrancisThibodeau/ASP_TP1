@@ -20,7 +20,7 @@ namespace TP1
         private void AfficherListe()
         {
             TableLogins table = new TableLogins((String)Application["MainDB"], this);
-            if (Session["UserName"].ToString() == "admin")
+            //if (Session["UserName"].ToString() == "admin")
                 Admin = true;
 
             table.SelectAll();

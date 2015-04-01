@@ -12,7 +12,7 @@
                 <td><asp:Button ID="BTN_EnLigne" runat="server" Text="Usagers en ligne..." CssClass="SubmitButton" OnClick="BTN_EnLigne_Click"/></td>
             </tr>
             <tr>
-                <td><asp:Button ID="BTN_Journal" runat="server" Text="Journal des visites" CssClass="SubmitButton"/></td>
+                <td><asp:Button ID="BTN_Journal" runat="server" Text="Journal des visites" CssClass="SubmitButton" OnClick="BTN_Journal_Click"/></td>
             </tr>
             <tr>
                 <td><asp:Button ID="BTN_Logout" runat="server" Text="Déconnexion" OnClick="BTN_Logout_Click" CssClass="SubmitButton"/></td>

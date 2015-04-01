@@ -65,5 +65,10 @@ namespace TP1
         {
             Response.Redirect("Room.aspx");
         }
+
+        protected void BTN_Journal_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogJournal.aspx");
+        }
     }
 }
