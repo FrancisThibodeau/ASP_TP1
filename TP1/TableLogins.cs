@@ -16,7 +16,6 @@ namespace TP1
 
         public String FullName { get; set; }
         public String UserName { get; set; }
-        public String Password { get; set; }
         public String Email { get; set; }
         public String Avatar { get; set; }
 
@@ -31,10 +30,10 @@ namespace TP1
         public override void GetValues()
         {
             ID = long.Parse(this["ID"]);
-            UserID = long.Parse(this["USERID"]);
-            LoginDate = DateTime.Parse(this["LOGINDATE"]);
-            LogoutDate = DateTime.Parse(this["LOGOUTDATE"]);
-            IPAddress = this["IPADDRESS"];
+            UserID = long.Parse(this["UserId"]);
+            LoginDate = DateTime.Parse(this["LoginDate"]);
+            LogoutDate = DateTime.Parse(this["LogoutDate"]);
+            IPAddress = this["IPAddress"];
             FullName = this["FullName"];
             UserName = this["UserName"];
             Email = this["Email"];
