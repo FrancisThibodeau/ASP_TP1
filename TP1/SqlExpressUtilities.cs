@@ -441,7 +441,7 @@ namespace SqlExpressUtilities
         }
 
         // Panneau parent à la GridView généré par MakeGriewView
-        private Panel PN_GridView = null;
+        public Panel PN_GridView = null;
         public virtual void MakeGridView(Panel PN_GridView, String EditPage)
         {
            

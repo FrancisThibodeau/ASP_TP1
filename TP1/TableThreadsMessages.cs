@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace TP1
 {
@@ -37,5 +38,6 @@ namespace TP1
         {
             UpdateRecord(ID, ThreadID, UserID, DateCreation, Message);
         }
+
     }
 }

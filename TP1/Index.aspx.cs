@@ -70,5 +70,10 @@ namespace TP1
         {
             Response.Redirect("LogJournal.aspx");
         }
+
+        protected void BTN_Chatroom_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Chatroom.aspx");
+        }
     }
 }
