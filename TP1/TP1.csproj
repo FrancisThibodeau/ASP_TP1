@@ -60,6 +60,7 @@
     <Content Include="App_Data\MainDB_log.ldf">
       <DependentUpon>MainDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Chatroom.aspx" />
     <Content Include="ClientFormUtilities.js" />
     <Content Include="Images\Anonymous.png" />
     <Content Include="Images\Busy.png" />
@@ -94,6 +95,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chatroom.aspx.cs">
+      <DependentUpon>Chatroom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chatroom.aspx.designer.cs">
+      <DependentUpon>Chatroom.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Email.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
