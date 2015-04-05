@@ -46,13 +46,13 @@
         <ContentTemplate>
             <table>
                 <tr>
-                    <td id="empty" style="width: 15%"></td>
-                    <td style="width: 70%">
+                    <td id="empty"></td>
+                    <td>
                         <asp:TextBox ID="TB_Text" runat="server" TextMode="MultiLine"></asp:TextBox></td>
-                    <td style="width: 15%">
-                        <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" CssClass="SubmitButton"/>
+                    <td>
+                        <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" />
                         <br />
-                        <asp:Button ID="BTN_Back" runat="server" Text="Retour" CssClass="SubmitButton" OnClick="BTN_Back_Click"/>
+                        <asp:Button ID="BTN_Back" runat="server" Text="Retour" />
                     </td>
                 </tr>
             </table>

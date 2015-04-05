@@ -14,14 +14,16 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             currentThread = new TableThreads((String)Application["MainDB"], this);
-            currentThread.SelectByFieldName("ID", 1);
+            currentThread.SelectByID("1");
             currentThread.EndQuerySQL();
             ShowMessages();
+            ShowInvitedUsers();
         }
 
         protected void TimerChatroom_Tick(object sender, EventArgs e)
         {
             ShowMessages();
+            ShowInvitedUsers();
         }
 
         private void ShowMessages()
@@ -44,14 +46,15 @@ namespace TP1
 
                 // Avatar
                 Image img = new Image();
-                img.ImageUrl = img.ImageUrl = "~/Avatars/" + user.Avatar + ".png";
-                img.Width = img.Height = 25;
+                img.ImageUrl = user.Avatar != "" ? "~/Avatars/" + user.Avatar + ".png" : "~/Images/Anonymous.png";
+                img.Width = img.Height = 40;
                 td.Controls.Add(img);
                 tr.Cells.Add(td);
 
                 // Nom et Date
                 td = new TableCell();
-                string content = user.Username + "<br/>" + messages.DateCreation + "<br/>";
+                string date = messages.DateCreation.ToShortDateString() + " " + messages.DateCreation.ToShortTimeString();
+                string content = user.Fullname + "<br/>" + date + "<br/>";
                 td.Controls.Add(new LiteralControl(content));
                 tr.Cells.Add(td);
 
@@ -74,5 +77,108 @@ namespace TP1
             PN_Messages.Controls.Clear();
             PN_Messages.Controls.Add(table);
         }
+
+        private void ShowInvitedUsers()
+        {
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            access.SelectByFieldName("THREAD_ID", currentThread.ID);
+            access.EndQuerySQL();
+
+            if (access.UserID == 0)
+                ShowAllUsers();
+            else
+                ShowSpecificUsers();
+        }
+
+        private void ShowAllUsers()
+        {
+            TableUsers users = new TableUsers((String)Application["MainDB"], this);
+            users.SelectAll("ONLINE DESC");
+
+            Table table = new Table();
+            TableRow tr;
+            TableCell td;
+
+            while (users.Next())
+            {
+                tr = new TableRow();
+                td = new TableCell();
+
+                Image img = new Image();
+                img.Height = img.Width = 25;
+                img.ImageUrl = users.Online != 0 ? "~/Images/OnLine.png" : "~/Images/OffLine.png";
+                td.Controls.Add(img);
+                tr.Cells.Add(td);
+
+                td = new TableCell();
+                img = new Image();
+                img.Height = img.Width = 25;
+                img.ImageUrl = users.Avatar != "" ? "~/Avatars/" + users.Avatar + ".png" : "~/Images/Anonymous.png";
+                td.Controls.Add(img);
+                tr.Cells.Add(td);
+
+                td = new TableCell();
+                td.Text = users.Fullname;
+                tr.Cells.Add(td);
+
+                table.Rows.Add(tr);
+            }
+
+            users.EndQuerySQL();
+            PN_Users.Controls.Clear();
+            PN_Users.Controls.Add(table);
+        }
+
+        private void ShowSpecificUsers()
+        {
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            access.SelectByFieldName("THREAD_ID", currentThread.ID);
+
+
+            TableUsers users = new TableUsers((String)Application["MainDB"], this);
+
+            Table table = new Table();
+            TableRow tr;
+            TableCell td;
+
+            do
+            {
+                users.SelectByID(access.UserID.ToString());
+                users.EndQuerySQL();
+
+                tr = new TableRow();
+                td = new TableCell();
+
+                Image img = new Image();
+                img.Height = img.Width = 25;
+                img.ImageUrl = users.Online != 0 ? "~/Images/OnLine.png" : "~/Images/OffLine.png";
+                td.Controls.Add(img);
+                tr.Cells.Add(td);
+
+                td = new TableCell();
+                img = new Image();
+                img.Height = img.Width = 25;
+                img.ImageUrl = users.Avatar != "" ? "~/Avatars/" + users.Avatar + ".png" : "~/Images/Anonymous.png";
+                td.Controls.Add(img);
+                tr.Cells.Add(td);
+
+                td = new TableCell();
+                td.Text = users.Fullname;
+                tr.Cells.Add(td);
+
+                table.Rows.Add(tr);
+            } while (access.Next());
+
+            access.EndQuerySQL();
+            PN_Users.Controls.Clear();
+            PN_Users.Controls.Add(table);
+        }
+
+        protected void BTN_Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index.aspx");
+        }
+
+
     }
 }

@@ -16,25 +16,6 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Login";
-
-            //TableThreads thread = new TableThreads((String)Application["MainDB"], this);
-            //thread.ID = 2; 
-            //thread.Title = "Only Chuck Norris";
-            //thread.Creator = 4;
-            //thread.DateCreation = DateTime.Now;
-            //thread.Insert();
-
-            //TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
-            //access.ThreadID = thread.ID;
-            //access.UserID = 4;
-            //access.Insert();
-
-            //TableThreadsMessages message = new TableThreadsMessages((String)Application["MainDB"], this); ;
-            //message.ThreadID = thread.ID;
-            //message.Message = "My tears cure cancer, too bad I never cry";
-            //message.DateCreation = DateTime.Now;
-            //message.UserID = 4;
-            //message.Insert();
         }
 
         protected void BTN_Login_Click(object sender, EventArgs e)
