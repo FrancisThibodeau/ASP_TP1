@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Chatroom.aspx.cs" Inherits="TP1.Chatroom" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 547px;
+        }
+        .auto-style2 {
+            width: 98px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
     <asp:Timer ID="TimerChatroom" runat="server" Interval="3000" OnTick="TimerChatroom_Tick"></asp:Timer>
@@ -46,13 +54,13 @@
         <ContentTemplate>
             <table>
                 <tr>
-                    <td id="empty"></td>
+                    <td id="empty" class="auto-style2"></td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="TB_Text" runat="server" TextMode="MultiLine" Width="536px" ></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="TB_Text" runat="server" TextMode="MultiLine"></asp:TextBox></td>
-                    <td>
-                        <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" />
+                        <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" CssClass="SubmitButton"/>
                         <br />
-                        <asp:Button ID="BTN_Back" runat="server" Text="Retour" />
+                        <asp:Button ID="BTN_Back" runat="server" Text="Retour" CssClass="SubmitButton" OnClick="BTN_Back_Click"/>
                     </td>
                 </tr>
             </table>
