@@ -174,9 +174,27 @@ namespace TP1
             PN_Users.Controls.Add(table);
         }
 
+        private void SendMessage()
+        {
+            TableThreadsMessages message = new TableThreadsMessages((String)Application["MainDB"], this);
+            message.ThreadID = currentThread.ID;
+            message.UserID = ((TableUsers)Session["User"]).ID;
+            message.DateCreation = DateTime.Now;
+            message.Message = TB_Message.Text;
+            message.Insert();
+        }
+
         protected void BTN_Back_Click(object sender, EventArgs e)
         {
             Response.Redirect("Index.aspx");
+        }
+
+        protected void BTN_Send_Click(object sender, EventArgs e)
+        {
+            if (TB_Message.Text != "")
+                SendMessage();
+
+            TB_Message.Text = "";
         }
 
 

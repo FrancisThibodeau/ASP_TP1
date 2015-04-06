@@ -56,9 +56,10 @@
                 <tr>
                     <td id="empty" class="auto-style2"></td>
                     <td class="auto-style1">
-                        <asp:TextBox ID="TB_Text" runat="server" TextMode="MultiLine" Width="536px" ></asp:TextBox></td>
+                        <asp:TextBox ID="TB_Message" runat="server" TextMode="MultiLine" Width="536px" ClientIDMode="Static"
+                            onkeydown="char = (event.which || event.keyCode); if (char == 13) document.getElementById(&quot;BTN_Send&quot;).click();"></asp:TextBox></td>
                     <td>
-                        <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" CssClass="SubmitButton"/>
+                        <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" CssClass="SubmitButton" OnClick="BTN_Send_Click" ClientIDMode="Static" />
                         <br />
                         <asp:Button ID="BTN_Back" runat="server" Text="Retour" CssClass="SubmitButton" OnClick="BTN_Back_Click"/>
                     </td>

@@ -103,13 +103,13 @@ namespace TP1 {
         protected global::System.Web.UI.UpdatePanel UPN_Text;
         
         /// <summary>
-        /// TB_Text control.
+        /// TB_Message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_Text;
+        protected global::System.Web.UI.WebControls.TextBox TB_Message;
         
         /// <summary>
         /// BTN_Send control.
