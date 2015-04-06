@@ -50,8 +50,7 @@
             </table>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:UpdatePanel ID="UPN_Text" runat="server">
-        <ContentTemplate>
+    <asp:Panel ID="PN_Message" runat="server">
             <table>
                 <tr>
                     <td id="empty" class="auto-style2"></td>
@@ -65,6 +64,5 @@
                     </td>
                 </tr>
             </table>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+    </asp:Panel>
 </asp:Content>
