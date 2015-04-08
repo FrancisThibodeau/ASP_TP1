@@ -71,10 +71,17 @@ namespace TP1
             InsertRecord(UserID, LoginDate, LogoutDate, IPAddress);
         }
 
+        public override void InitColumnsVisibility()
+        {
+            base.InitColumnsVisibility();
+            SetColumnVisibility("ID", false);
+            //SetColumnVisibility("PASSWORD", false);
+        }
+
         public override void InitCellsContentDelegate()
         {
             base.InitCellsContentDelegate();
-            SetCellContentDelegate("ID", ContentDelegateID);
+            //SetCellContentDelegate("ID", ContentDelegateID);
             SetCellContentDelegate("UserID", ContentDelegateUserID);
             SetCellContentDelegate("LoginDate", ContentDelegateLoginDate);
             SetCellContentDelegate("LogoutDate", ContentDelegateLogoutDate);
@@ -94,10 +101,10 @@ namespace TP1
         public override void InitColumnsTitles()
         {
             base.InitColumnsTitles();
-            SetColumnTitle("ID", "Id");
+            //SetColumnTitle("ID", "Id");
             SetColumnTitle("UserID", "User Id");
             SetColumnTitle("LoginDate", "Login date");
-            SetColumnTitle("LogoutDate", "Logout date");
+            SetColumnTitle("LogoutDate", "Durée");
             SetColumnTitle("IpAddress", "Ip Adresse");
             SetColumnTitle("UserName", "UserName");
             SetColumnTitle("FullName", "Nom complet");
@@ -105,12 +112,12 @@ namespace TP1
             SetColumnTitle("Avatar", "Avatar");
         }
 
-        System.Web.UI.WebControls.WebControl ContentDelegateID()
-        {
-            Label lbl = new Label();
-            lbl.Text = ID.ToString();
-            return lbl;
-        }
+        //System.Web.UI.WebControls.WebControl ContentDelegateID()
+        //{
+        //    Label lbl = new Label();
+        //    lbl.Text = ID.ToString();
+        //    return lbl;
+        //}
         System.Web.UI.WebControls.WebControl ContentDelegateUserID()
         {
             Label lbl = new Label();
@@ -126,7 +133,7 @@ namespace TP1
         System.Web.UI.WebControls.WebControl ContentDelegateLogoutDate()
         {
             Label lbl = new Label();
-            lbl.Text = LogoutDate.ToString();
+            lbl.Text = DurationToString(LoginDate, LogoutDate);
             return lbl;
         }
         System.Web.UI.WebControls.WebControl ContentDelegateIPAddress()
@@ -166,6 +173,16 @@ namespace TP1
             }
             img.Width = img.Height = 40;
             return img;
+        }
+        public static String DurationToString(DateTime start, DateTime end)
+        {
+            TimeSpan duration = end - start;
+            double hours = Math.Truncate(duration.TotalHours);
+            double minutes = Math.Truncate(duration.TotalMinutes);
+            double seconds = Math.Truncate(Math.Round(100 * duration.TotalSeconds) / 100);
+            return (hours < 10 ? "0" + hours.ToString() : hours.ToString()) + ":" +
+                   (minutes < 10 ? "0" + minutes.ToString() : minutes.ToString()) + ":" +
+                   (seconds < 10 ? "0" + seconds.ToString() : seconds.ToString());
         }
     }
 }

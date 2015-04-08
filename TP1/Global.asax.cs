@@ -17,9 +17,12 @@ namespace TP1
 
         protected void Session_End(object sender, EventArgs e)
         {
-            ((TableUsers)Session["User"]).Online = 0;
-            ((TableUsers)Session["User"]).Update();
-            ((TableUsers)Session["User"]).EndQuerySQL();
+            if ((TableUsers)Session["User"] != null)
+            {
+                ((TableUsers)Session["User"]).Online = 0;
+                ((TableUsers)Session["User"]).Update();
+                ((TableUsers)Session["User"]).EndQuerySQL();
+            }
         }
     }
 }

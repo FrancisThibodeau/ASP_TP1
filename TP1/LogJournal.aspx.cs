@@ -13,7 +13,7 @@ namespace TP1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)Master.FindControl("LBL_Titre")).Text = "Room";
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Journal Des Visites";
             AfficherListe();
         }
 
@@ -33,6 +33,11 @@ namespace TP1
         protected void BTN_Retour_Click(object sender, EventArgs e)
         {
             Response.Redirect("Index.aspx");
+        }
+
+        protected void TimerJournal_Tick(object sender, EventArgs e)
+        {
+            AfficherListe();
         }
     }
 }
