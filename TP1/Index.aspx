@@ -18,6 +18,9 @@
                 <td><asp:Button ID="BTN_Chatroom" runat="server" Text="Chatroom" CssClass="SubmitButton" OnClick="BTN_Chatroom_Click"/></td>
             </tr>
             <tr>
+                <td><asp:Button ID="BTN_ThreadManager" runat="server" Text="Gestion des discussions" CssClass="SubmitButton" OnClick="BTN_ThreadManager_Click" /></td>
+            </tr>
+            <tr>
                 <td><asp:Button ID="BTN_Logout" runat="server" Text="Déconnexion" OnClick="BTN_Logout_Click" CssClass="SubmitButton"/></td>
             </tr>
         </table>

@@ -92,6 +92,7 @@
     <Content Include="Room.aspx" />
     <Content Include="Styles.css" />
     <Content Include="Index.aspx" />
+    <Content Include="ThreadsManager.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThreadsManager.aspx.cs">
+      <DependentUpon>ThreadsManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThreadsManager.aspx.designer.cs">
+      <DependentUpon>ThreadsManager.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

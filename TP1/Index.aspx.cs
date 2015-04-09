@@ -75,5 +75,10 @@ namespace TP1
         {
             Response.Redirect("Chatroom.aspx");
         }
+
+        protected void BTN_ThreadManager_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ThreadsManager.aspx");
+        }
     }
 }
