@@ -13,17 +13,21 @@ namespace TP1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)Master.FindControl("LBL_Titre")).Text = "Chatroom";
+
             currentThread = new TableThreads((String)Application["MainDB"], this);
             currentThread.SelectByID("1");
             currentThread.EndQuerySQL();
             ShowMessages();
             ShowInvitedUsers();
+            ShowThreadButtons();
         }
 
         protected void TimerChatroom_Tick(object sender, EventArgs e)
         {
             ShowMessages();
             ShowInvitedUsers();
+            ShowThreadButtons();
         }
 
         private void ShowMessages()
@@ -182,6 +186,77 @@ namespace TP1
             message.DateCreation = DateTime.Now;
             message.Message = TB_Message.Text;
             message.Insert();
+        }
+
+        private void ShowThreadButtons()
+        {
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            TableThreads thread = new TableThreads((String)Application["MainDB"], this);
+
+            Table table = new Table();
+            TableRow tr;
+            TableCell td;
+
+            access.SelectByFieldName("USER_ID", ((TableUsers)Session["User"]).ID);
+
+            do
+            {
+                thread.SelectByID(access.ThreadID.ToString());
+                thread.EndQuerySQL();
+
+                tr = new TableRow();
+                td = new TableCell();
+
+                Button btn = new Button();
+                btn.ID = "ThreadButton_" + thread.ID.ToString();
+                btn.Text = thread.Title;
+                btn.Click += BTN_Thread_Click;
+                td.Controls.Add(btn);
+                tr.Cells.Add(td);
+
+                table.Rows.Add(tr);
+            }while (access.Next());
+
+            access.EndQuerySQL();
+
+            access.SelectByFieldName("USER_ID", 0);
+
+            do
+            {
+                thread.SelectByID(access.ThreadID.ToString());
+                thread.EndQuerySQL();
+
+                tr = new TableRow();
+                td = new TableCell();
+
+                Button btn = new Button();
+                btn.ID = "ThreadButton_" + thread.ID.ToString();
+                btn.Text = thread.Title;
+                btn.Click += BTN_Thread_Click;
+                td.Controls.Add(btn);
+                tr.Cells.Add(td);
+
+                table.Rows.Add(tr);
+            } while (access.Next());
+
+            access.EndQuerySQL();
+            PN_Threads.Controls.Clear();
+            PN_Threads.Controls.Add(table);
+        }
+
+        protected void BTN_Thread_Click(object sender, EventArgs e)
+        {
+            String threadId = ((Button)sender).ID;
+
+            threadId = threadId.Replace("ThreadButton_", "");
+
+            currentThread.SelectByID(threadId);
+            currentThread.EndQuerySQL();
+
+            LBL_Title.Text = currentThread.Title;
+
+            ShowMessages();
+            ShowInvitedUsers();
         }
 
         protected void BTN_Back_Click(object sender, EventArgs e)
