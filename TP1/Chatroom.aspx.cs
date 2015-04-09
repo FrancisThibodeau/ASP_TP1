@@ -9,17 +9,10 @@ namespace TP1
 {
     public partial class Chatroom : System.Web.UI.Page
     {
-        TableThreads currentThread;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Chatroom";
 
-            currentThread = new TableThreads((String)Application["MainDB"], this);
-            currentThread.SelectByID("1");
-            currentThread.EndQuerySQL();
-            ShowMessages();
-            ShowInvitedUsers();
             ShowThreadButtons();
         }
 
@@ -33,7 +26,7 @@ namespace TP1
         private void ShowMessages()
         {
             TableThreadsMessages messages = new TableThreadsMessages((String)Application["MainDB"], this);
-            messages.SelectByFieldName("THREAD_ID", currentThread.ID);
+            messages.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
 
             TableUsers user = new TableUsers((String)Application["MainDB"], this);
 
@@ -85,7 +78,7 @@ namespace TP1
         private void ShowInvitedUsers()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
-            access.SelectByFieldName("THREAD_ID", currentThread.ID);
+            access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
             access.EndQuerySQL();
 
             if (access.UserID == 0)
@@ -136,7 +129,7 @@ namespace TP1
         private void ShowSpecificUsers()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
-            access.SelectByFieldName("THREAD_ID", currentThread.ID);
+            access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
 
 
             TableUsers users = new TableUsers((String)Application["MainDB"], this);
@@ -181,7 +174,7 @@ namespace TP1
         private void SendMessage()
         {
             TableThreadsMessages message = new TableThreadsMessages((String)Application["MainDB"], this);
-            message.ThreadID = currentThread.ID;
+            message.ThreadID = long.Parse((String)Session["CurrentThread"]);
             message.UserID = ((TableUsers)Session["User"]).ID;
             message.DateCreation = DateTime.Now;
             message.Message = TB_Message.Text;
@@ -197,25 +190,28 @@ namespace TP1
             TableRow tr;
             TableCell td;
 
-            access.SelectByFieldName("USER_ID", ((TableUsers)Session["User"]).ID);
-
-            do
+            if (access.SelectByFieldName("USER_ID", ((TableUsers)Session["User"]).ID))
             {
-                thread.SelectByID(access.ThreadID.ToString());
-                thread.EndQuerySQL();
 
-                tr = new TableRow();
-                td = new TableCell();
+                do
+                {
+                    thread.SelectByID(access.ThreadID.ToString());
+                    thread.EndQuerySQL();
 
-                Button btn = new Button();
-                btn.ID = "ThreadButton_" + thread.ID.ToString();
-                btn.Text = thread.Title;
-                btn.Click += BTN_Thread_Click;
-                td.Controls.Add(btn);
-                tr.Cells.Add(td);
+                    tr = new TableRow();
+                    td = new TableCell();
 
-                table.Rows.Add(tr);
-            }while (access.Next());
+                    Button btn = new Button();
+                    btn.ID = "ThreadButton_" + thread.ID.ToString();
+                    btn.Text = thread.Title;
+                    btn.Click += BTN_Thread_Click;
+                    td.Controls.Add(btn);
+                    tr.Cells.Add(td);
+
+                    table.Rows.Add(tr);
+                } while (access.Next());
+            }
+
 
             access.EndQuerySQL();
 
@@ -250,10 +246,12 @@ namespace TP1
 
             threadId = threadId.Replace("ThreadButton_", "");
 
-            currentThread.SelectByID(threadId);
-            currentThread.EndQuerySQL();
+            Session["CurrentThread"] = threadId;
 
-            LBL_Title.Text = currentThread.Title;
+            TableThreads thread = new TableThreads((String)Application["MainDB"], this);
+            thread.SelectByID(threadId);
+            LBL_Title.Text = thread.Title;
+            thread.EndQuerySQL();
 
             ShowMessages();
             ShowInvitedUsers();
