@@ -13,78 +13,84 @@ namespace TP1
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Chatroom";
 
-            ShowThreadButtons();
-        }
-
-        protected void TimerChatroom_Tick(object sender, EventArgs e)
-        {
             ShowMessages();
             ShowInvitedUsers();
             ShowThreadButtons();
         }
 
+        protected void TimerChatroom_Tick(object sender, EventArgs e)
+        {
+
+        }
+
         private void ShowMessages()
         {
             TableThreadsMessages messages = new TableThreadsMessages((String)Application["MainDB"], this);
-            messages.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
-
-            TableUsers user = new TableUsers((String)Application["MainDB"], this);
-
-            Table table = new Table();
-            TableRow tr;
-            TableCell td;
-
-            do
+            if (Session["CurrentThread"] != null &&
+                messages.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]))
             {
-                tr = new TableRow();
-                td = new TableCell();
+                TableUsers user = new TableUsers((String)Application["MainDB"], this);
 
-                user.SelectByID(messages.UserID.ToString());
+                Table table = new Table();
+                TableRow tr;
+                TableCell td;
 
-                // Avatar
-                Image img = new Image();
-                img.ImageUrl = user.Avatar != "" ? "~/Avatars/" + user.Avatar + ".png" : "~/Images/Anonymous.png";
-                img.Width = img.Height = 40;
-                td.Controls.Add(img);
-                tr.Cells.Add(td);
-
-                // Nom et Date
-                td = new TableCell();
-                string date = messages.DateCreation.ToShortDateString() + " " + messages.DateCreation.ToShortTimeString();
-                string content = user.Fullname + "<br/>" + date + "<br/>";
-                td.Controls.Add(new LiteralControl(content));
-                tr.Cells.Add(td);
-
-                // Edit buttons
-                td = new TableCell();
-                if (user.ID == ((TableUsers)Session["User"]).ID)
+                do
                 {
-                    td.Text = "X";
-                }
-                tr.Cells.Add(td);
+                    tr = new TableRow();
+                    td = new TableCell();
 
-                // Message
-                td = new TableCell();
-                td.Text = messages.Message;
-                tr.Cells.Add(td);
+                    user.SelectByID(messages.UserID.ToString());
 
-                table.Rows.Add(tr);
-            } while (messages.Next());
+                    // Avatar
+                    Image img = new Image();
+                    img.ImageUrl = user.Avatar != "" ? "~/Avatars/" + user.Avatar + ".png" : "~/Images/Anonymous.png";
+                    img.Width = img.Height = 40;
+                    td.Controls.Add(img);
+                    tr.Cells.Add(td);
 
-            PN_Messages.Controls.Clear();
-            PN_Messages.Controls.Add(table);
+                    // Nom et Date
+                    td = new TableCell();
+                    string date = messages.DateCreation.ToShortDateString() + " " + messages.DateCreation.ToShortTimeString();
+                    string content = user.Fullname + "<br/>" + date + "<br/>";
+                    td.Controls.Add(new LiteralControl(content));
+                    tr.Cells.Add(td);
+
+                    // Edit buttons
+                    td = new TableCell();
+                    if (user.ID == ((TableUsers)Session["User"]).ID)
+                    {
+                        td.Controls.Add(CreateDeleteButton(messages.ID.ToString()));
+                    }
+                    tr.Cells.Add(td);
+
+                    // Message
+                    td = new TableCell();
+                    td.Text = messages.Message;
+                    tr.Cells.Add(td);
+
+                    table.Rows.Add(tr);
+                } while (messages.Next());
+
+                PN_Messages.Controls.Clear();
+                PN_Messages.Controls.Add(table);
+            }
+
         }
 
         private void ShowInvitedUsers()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
-            access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
-            access.EndQuerySQL();
+            if (Session["CurrentThread"] != null && 
+                access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]))
+            {
+                access.EndQuerySQL();
 
-            if (access.UserID == 0)
-                ShowAllUsers();
-            else
-                ShowSpecificUsers();
+                if (access.UserID == 0)
+                    ShowAllUsers();
+                else
+                    ShowSpecificUsers();
+            }
         }
 
         private void ShowAllUsers()
@@ -240,6 +246,17 @@ namespace TP1
             PN_Threads.Controls.Add(table);
         }
 
+        private ImageButton CreateDeleteButton(String messageId)
+        {
+            ImageButton btn = new ImageButton();
+            btn.ID = "BTN_Delete_" + messageId;
+            btn.ImageUrl = @"~/Images/delete.jpg";
+            btn.Width = btn.Height = 26;
+            btn.Click += BTN_Delete_Click;
+
+            return btn;
+        }
+
         protected void BTN_Thread_Click(object sender, EventArgs e)
         {
             String threadId = ((Button)sender).ID;
@@ -255,6 +272,18 @@ namespace TP1
 
             ShowMessages();
             ShowInvitedUsers();
+        }
+
+        protected void BTN_Delete_Click(object sender, ImageClickEventArgs e)
+        {
+            String messageId = ((ImageButton)sender).ID;
+
+            messageId = messageId.Replace("BTN_Delete_", "");
+
+            TableThreadsMessages message = new TableThreadsMessages((String)Application["MainDB"], this);
+            message.DeleteRecordByID(messageId);
+
+            ShowMessages();
         }
 
         protected void BTN_Back_Click(object sender, EventArgs e)
