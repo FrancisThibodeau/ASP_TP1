@@ -61,6 +61,7 @@ namespace TP1
                     if (user.ID == ((TableUsers)Session["User"]).ID)
                     {
                         td.Controls.Add(CreateDeleteButton(messages.ID.ToString()));
+                        td.Controls.Add(CreateEditButton(messages.ID.ToString()));
                     }
                     tr.Cells.Add(td);
 
@@ -187,6 +188,19 @@ namespace TP1
             message.Insert();
         }
 
+        private void EditMessage()
+        {
+            TableThreadsMessages message = new TableThreadsMessages((String)Application["MainDB"], this);
+            message.SelectByID((String)Session["EditID"]);
+
+            message.Message = TB_Message.Text;
+            message.Update();
+
+            Session["EditID"] = null;
+
+            message.EndQuerySQL();
+        }
+
         private void ShowThreadButtons()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
@@ -250,9 +264,20 @@ namespace TP1
         {
             ImageButton btn = new ImageButton();
             btn.ID = "BTN_Delete_" + messageId;
-            btn.ImageUrl = @"~/Images/delete.jpg";
+            btn.ImageUrl = @"~/Images/delete.png";
             btn.Width = btn.Height = 26;
             btn.Click += BTN_Delete_Click;
+
+            return btn;
+        }
+
+        private ImageButton CreateEditButton(String messageId)
+        {
+            ImageButton btn = new ImageButton();
+            btn.ID = "BTN_Edit_" + messageId;
+            btn.ImageUrl = @"~/Images/edit.png";
+            btn.Width = btn.Height = 26;
+            btn.Click += BTN_Edit_Click;
 
             return btn;
         }
@@ -286,6 +311,19 @@ namespace TP1
             ShowMessages();
         }
 
+        protected void BTN_Edit_Click(object sender, ImageClickEventArgs e)
+        {
+            String messageId = ((ImageButton)sender).ID;
+
+            messageId = messageId.Replace("BTN_Edit_", "");
+            TableThreadsMessages message = new TableThreadsMessages((String)Application["MainDB"], this);
+            message.SelectByID(messageId);
+
+            Session["EditID"] = messageId;
+
+            message.EndQuerySQL();
+        }
+
         protected void BTN_Back_Click(object sender, EventArgs e)
         {
             Response.Redirect("Index.aspx");
@@ -294,7 +332,12 @@ namespace TP1
         protected void BTN_Send_Click(object sender, EventArgs e)
         {
             if (TB_Message.Text != "")
-                SendMessage();
+            {
+                if (Session["EditID"] == null)
+                    SendMessage();
+                else
+                    EditMessage();
+            }
 
             TB_Message.Text = "";
         }
