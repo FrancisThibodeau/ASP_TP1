@@ -4,7 +4,44 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
 
-    <table>
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+
+                        <!-- Contenu de la partie gauche de la table -->
+
+                    </td>
+                    <td>
+
+                        <!-- Contenu de la partie droite de la table -->
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <!-- Seems like a blanck space filled with <td> and a <div> -->
+
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div> seems to be the submit button -->
+
+        <!-- Two spans containing master content -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+   <%-- <table>
         <tr>
             <td>
                 <label>Liste de mes discussions</label>
@@ -71,6 +108,6 @@
                 <asp:Button ID="BTN_Retour" runat="server" Text="Retour" OnClick="BTN_Retour_Click" />
             </td>
         </tr>
-    </table>
+    </table>--%>
 
 </asp:Content>

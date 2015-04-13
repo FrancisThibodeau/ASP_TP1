@@ -1,0 +1,374 @@
+<!--
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://www.informatique.clg.qc.ca/mainsite/NewThread.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- redirection automatique après 120 secondes <meta http-equiv="refresh" content="120; URL=Logout.html" /> -->
+<!--    <title>
+
+</title>
+    <style type="text/css">
+        .auto-style1 {
+            height: 115px;
+        }
+
+        .Titre {
+            font-size: 20px;
+        }
+    </style>
+
+    <script src="./NewThread.aspx_files/jquery-1.10.2.js"></script>
+    <link href="http://www.informatique.clg.qc.ca/mainsite/Main.css" rel="stylesheet">
+    <script src="./NewThread.aspx_files/ClientFormUtilities.js"></script>
+    <script>
+        /*
+        history.pushState(null, null, 'no-back-button');
+        window.addEventListener('popstate', function (event) {
+            history.pushState(null, null, 'no-back-button');
+        });
+        */
+        function GrowCallBackPhoto(evt) {
+            $(evt.target).animate({
+                height: "+=140",
+                
+            }, 400, '')
+
+        }
+
+        function ReduceCallBackPhoto(evt) {
+            $(evt.target).animate({
+                height: "-=140",
+            }, 400, '')
+        }
+
+        function InstallCallBack() {
+            
+            var TA_Collection = document.getElementsByClassName("thumbNail");
+            for (i = 0; i < TA_Collection.length; i++) {
+                TA_Collection[i].onmouseover = GrowCallBackPhoto;
+                TA_Collection[i].onmouseout = ReduceCallBackPhoto;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="main">
+        <form name="aspnetForm" method="post" action="./NewThread.aspx_files/NewThread.aspx.html" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./NewThread.aspx_files/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="./NewThread.aspx_files/ScriptResource.axd" type="text/javascript"></script>
+<script src="./NewThread.aspx_files/ScriptResource(1).axd" type="text/javascript"></script>
+<script src="./NewThread.aspx_files/ScriptResource(2).axd" type="text/javascript"></script>
+<script src="./NewThread.aspx_files/ScriptResource(3).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	
+	
+	
+</div>
+            <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager2', 'aspnetForm', ['tctl00$UPN_TimeLeft',''], ['ctl00$TimerTimeLetf',''], [], 90, 'ctl00');
+//]]>
+</script>
+
+            <span id="ctl00_TimerTimeLetf" style="visibility:hidden;display:none;"></span>
+            <div class="mainHeader">
+                <table style="width:100%">
+                    <tbody><tr>
+                        <td>
+                            <h2>
+                                <span id="ctl00_LBL_Page_Title">Gestion de mes discussions...</span></h2>
+                        </td>
+                        <td>
+                            <div style="height: 64px; margin: 0px; vertical-align: middle;">
+                                <span id="ctl00_LBL_Username" class="UserFullName">Thibodeau Francis</span>
+                                <br>
+                                <div id="ctl00_UPN_TimeLeft">
+                                        <span id="ctl00_LBL_TimeLeft" class="TimeLeft"></span>
+                                    </div>
+                            </div>
+                        </td>
+                        <td>
+                            <img id="ctl00_IMG_Avatar" class="smallAvatar" src="./NewThread.aspx_files/ce84f2c1-d2d1-43f5-b4d5-2c9511d3832f.png" style="border-width:0px;">
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+            <hr>
+            -->
+    <div class="form2">
+        <table>
+            <tbody><tr>
+                <td style="padding: 5px; width: 50%; vertical-align: top; text-align: center;">
+                    <span id="ctl00_MainMasterContent_LBL_List" class="Titre">Liste de mes discussions</span>
+                    <br>
+                    <select size="4" name="ctl00$MainMasterContent$List_Threads" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$List_Threads\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_MainMasterContent_List_Threads" style="height:340px;">
+	<option value="55">Test</option>
+
+</select>
+                    <br>
+                    <br>
+                    <input type="submit" name="ctl00$MainMasterContent$BTN_NewThread" value="Nouveau..." id="ctl00_MainMasterContent_BTN_NewThread" class="submitBTN"><br>
+                    <input type="submit" name="ctl00$MainMasterContent$BTN_CreateThread" value="Créer..." onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainMasterContent$BTN_CreateThread&quot;, &quot;&quot;, true, &quot;VG_ThreadManager&quot;, &quot;&quot;, false, false))" id="ctl00_MainMasterContent_BTN_CreateThread" class="submitBTN"><br>
+                    <input type="submit" name="ctl00$MainMasterContent$BTN_Delete" value="Effacer..." onclick="javascript:return confirm(&#39;Etes-vous sur de vouloir supprimer cette discussion?&#39;);" id="ctl00_MainMasterContent_BTN_Delete" class="submitBTN"><br>
+                </td>
+                <td style="padding: 5px; width: 60%;">
+                    <span id="ctl00_MainMasterContent_LBL_Thread_Title" class="Titre">Titre de la discussion</span>
+                    <br>
+                    <input name="ctl00$MainMasterContent$TB_Thread_Title" type="text" id="ctl00_MainMasterContent_TB_Thread_Title" style="width:208px;"><br>
+                    <br>
+                    <span id="ctl00_MainMasterContent_LBL_Invited_Users" class="Titre">Sélection des invités</span>
+                    <br>
+                    <div id="ctl00_MainMasterContent_PN_HeaderSelection" style="width:217px;">
+	<table border="0">
+		<tbody><tr>
+			<td><input id="All_Users" type="checkbox" name="ctl00$MainMasterContent$All_Users" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$All_Users\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td></td><td>Tous les usagers</td>
+		</tr>
+	</tbody></table>
+</div>
+                    <div id="PN_Selection" style="height:360px;width:217px;overflow-y:scroll;">
+	<table border="0">
+		<tbody><tr>
+			<td><input id="CB_9" type="checkbox" name="ctl00$MainMasterContent$CB_9" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_9\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/3dd814ba-7424-41ed-aaa7-ff012487aac6.png" style="height:26px;width:26px;border-width:0px;"></td><td>Webmestre</td>
+		</tr><tr>
+			<td><input id="CB_10" type="checkbox" name="ctl00$MainMasterContent$CB_10" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_10\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/64283b13-4603-4a77-8b3c-3b7460f214bb.png" style="height:26px;width:26px;border-width:0px;"></td><td>Nicolas Chourot</td>
+		</tr><tr>
+			<td><input id="CB_11" type="checkbox" name="ctl00$MainMasterContent$CB_11" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_11\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/c03279ec-4d3f-46f2-92b0-83b2bc224816.png" style="height:26px;width:26px;border-width:0px;"></td><td>Stéphane Chassé</td>
+		</tr><tr>
+			<td><input id="CB_12" type="checkbox" name="ctl00$MainMasterContent$CB_12" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_12\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/d8c60633-665f-41d2-a60e-2a028836b018.png" style="height:26px;width:26px;border-width:0px;"></td><td>ontest</td>
+		</tr><tr>
+			<td><input id="CB_13" type="checkbox" name="ctl00$MainMasterContent$CB_13" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_13\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/132187c2-5067-42c5-80d2-39a9d8bf54ba.png" style="height:26px;width:26px;border-width:0px;"></td><td>Don't even think about it!</td>
+		</tr><tr>
+			<td><input id="CB_14" type="checkbox" name="ctl00$MainMasterContent$CB_14" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_14\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/49a1faf8-39a4-4c9d-a1d4-b076e9c44c25.png" style="height:26px;width:26px;border-width:0px;"></td><td>Étienne Forest</td>
+		</tr><tr>
+			<td><input id="CB_15" type="checkbox" name="ctl00$MainMasterContent$CB_15" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_15\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/8eb7b586-7683-4091-adc6-68f142b73738.png" style="height:26px;width:26px;border-width:0px;"></td><td>François Jean</td>
+		</tr><tr>
+			<td><input id="CB_16" type="checkbox" name="ctl00$MainMasterContent$CB_16" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_16\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/c7290e08-32e2-45bc-9b44-8a1778e1d4e6.png" style="height:26px;width:26px;border-width:0px;"></td><td>Xavier Brosseau</td>
+		</tr><tr>
+			<td><input id="CB_17" type="checkbox" name="ctl00$MainMasterContent$CB_17" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_17\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/7c64b230-912e-4538-8207-9bcca3d4a3b6.png" style="height:26px;width:26px;border-width:0px;"></td><td>Modérateur</td>
+		</tr><tr>
+			<td><input id="CB_19" type="checkbox" name="ctl00$MainMasterContent$CB_19" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_19\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/46327e35-3f58-41c2-9026-c2d097638d55.png" style="height:26px;width:26px;border-width:0px;"></td><td>Melissa Boucher</td>
+		</tr><tr>
+			<td><input id="CB_21" type="checkbox" name="ctl00$MainMasterContent$CB_21" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_21\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/8928f65d-6d57-4b4a-a1ce-b7174c71333c.png" style="height:26px;width:26px;border-width:0px;"></td><td>Conerlius</td>
+		</tr><tr>
+			<td><input id="CB_23" type="checkbox" name="ctl00$MainMasterContent$CB_23" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_23\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/4172fd82-fb4d-4e75-8b6e-355668548101.png" style="height:26px;width:26px;border-width:0px;"></td><td>frederic paquette</td>
+		</tr><tr>
+			<td><input id="CB_24" type="checkbox" name="ctl00$MainMasterContent$CB_24" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_24\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/221c8c4f-79ae-477d-b8e9-82645ddb952d.png" style="height:26px;width:26px;border-width:0px;"></td><td>david rodier</td>
+		</tr><tr>
+			<td><input id="CB_25" type="checkbox" name="ctl00$MainMasterContent$CB_25" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_25\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/dd90c764-07fb-4c89-a8cf-36cd19432974.png" style="height:26px;width:26px;border-width:0px;"></td><td>Yvon Steinthal</td>
+		</tr><tr>
+			<td><input id="CB_26" type="checkbox" name="ctl00$MainMasterContent$CB_26" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_26\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/57ad90dc-deb4-4c1d-a070-1f954959e146.png" style="height:26px;width:26px;border-width:0px;"></td><td>Shaun Cooper</td>
+		</tr><tr>
+			<td><input id="CB_27" type="checkbox" name="ctl00$MainMasterContent$CB_27" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_27\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/9f689df6-24f9-4b19-86a4-e7c8c4d26a3a.png" style="height:26px;width:26px;border-width:0px;"></td><td>PAS EMMANUEL BELOIN</td>
+		</tr><tr>
+			<td><input id="CB_28" type="checkbox" name="ctl00$MainMasterContent$CB_28" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_28\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/dae6a046-c5ae-4c23-920b-746c17ff7e4b.png" style="height:26px;width:26px;border-width:0px;"></td><td>Alexis Parent</td>
+		</tr><tr>
+			<td><input id="CB_29" type="checkbox" name="ctl00$MainMasterContent$CB_29" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_29\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/8f441127-b164-4ef7-a612-e4281d7c3a4c.png" style="height:26px;width:26px;border-width:0px;"></td><td>Alexandre-Xavier</td>
+		</tr><tr>
+			<td><input id="CB_30" type="checkbox" name="ctl00$MainMasterContent$CB_30" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_30\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/5e6ceca3-d05b-475e-9cc1-689b73e758f9.png" style="height:26px;width:26px;border-width:0px;"></td><td>Antoine Latendresse</td>
+		</tr><tr>
+			<td><input id="CB_31" type="checkbox" name="ctl00$MainMasterContent$CB_31" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_31\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/a5207610-963c-4116-8a1f-cb06bf3a0c3f.png" style="height:26px;width:26px;border-width:0px;"></td><td>Charlie Laplante</td>
+		</tr><tr>
+			<td><input id="CB_35" type="checkbox" name="ctl00$MainMasterContent$CB_35" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_35\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/92ac75c8-8f6a-4636-9572-1914a062c339.png" style="height:26px;width:26px;border-width:0px;"></td><td>Thug</td>
+		</tr><tr>
+			<td><input id="CB_38" type="checkbox" name="ctl00$MainMasterContent$CB_38" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_38\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/c5a43f7f-f349-4ea0-99de-8f242b645322.png" style="height:26px;width:26px;border-width:0px;"></td><td>chattonswag</td>
+		</tr><tr>
+			<td><input id="CB_40" type="checkbox" name="ctl00$MainMasterContent$CB_40" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_40\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/383e1dad-937d-4c73-8e1c-ec15bc723ad2.png" style="height:26px;width:26px;border-width:0px;"></td><td>T3 Thanatos</td>
+		</tr><tr>
+			<td><input id="CB_42" type="checkbox" name="ctl00$MainMasterContent$CB_42" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_42\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/33d6e287-2f0a-4597-9043-f6ea390d320a.png" style="height:26px;width:26px;border-width:0px;"></td><td>Francois Rioux</td>
+		</tr><tr>
+			<td><input id="CB_44" type="checkbox" name="ctl00$MainMasterContent$CB_44" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_44\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/14c14193-20fa-428d-aee1-107eba0a019d.png" style="height:26px;width:26px;border-width:0px;"></td><td>bizzbizz</td>
+		</tr><tr>
+			<td><input id="CB_53" type="checkbox" name="ctl00$MainMasterContent$CB_53" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_53\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/cfa92de9-207a-4ec2-8374-7cce2e4ebd41.png" style="height:26px;width:26px;border-width:0px;"></td><td>sod;jhliskdjghi</td>
+		</tr><tr>
+			<td><input id="CB_54" type="checkbox" name="ctl00$MainMasterContent$CB_54" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_54\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/4802d79f-36bd-4fda-9834-ec1e4648446f.png" style="height:26px;width:26px;border-width:0px;"></td><td>qwerty</td>
+		</tr><tr>
+			<td><input id="CB_57" type="checkbox" name="ctl00$MainMasterContent$CB_57" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_57\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/4337800e-e2d1-4d15-9d34-1821356bf1d8.png" style="height:26px;width:26px;border-width:0px;"></td><td>blipblop</td>
+		</tr><tr>
+			<td><input id="CB_58" type="checkbox" name="ctl00$MainMasterContent$CB_58" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_58\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/39f92999-fae9-49c4-86cc-2814c33584b9.png" style="height:26px;width:26px;border-width:0px;"></td><td>jesuischarlie</td>
+		</tr><tr>
+			<td><input id="CB_59" type="checkbox" name="ctl00$MainMasterContent$CB_59" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_59\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/23136707-dead-4fb6-8983-12892cfb8e70.png" style="height:26px;width:26px;border-width:0px;"></td><td>Alexandre Dubé</td>
+		</tr><tr>
+			<td><input id="CB_60" type="checkbox" name="ctl00$MainMasterContent$CB_60" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_60\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>A</td>
+		</tr><tr>
+			<td><input id="CB_61" type="checkbox" name="ctl00$MainMasterContent$CB_61" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_61\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/a1166075-94b5-4b81-930e-81d7dfb8498b.png" style="height:26px;width:26px;border-width:0px;"></td><td>Hitler</td>
+		</tr><tr>
+			<td><input id="CB_62" type="checkbox" name="ctl00$MainMasterContent$CB_62" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_62\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/c3894de5-c35d-4f79-a3ed-e79893e2c4c0.png" style="height:26px;width:26px;border-width:0px;"></td><td>Je suis un troll</td>
+		</tr><tr>
+			<td><input id="CB_63" type="checkbox" name="ctl00$MainMasterContent$CB_63" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_63\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/3112bca9-1fac-4150-be75-17f10660063a.png" style="height:26px;width:26px;border-width:0px;"></td><td>Anthony Labelle-Voyez</td>
+		</tr><tr>
+			<td><input id="CB_64" type="checkbox" name="ctl00$MainMasterContent$CB_64" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_64\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>Jmatouche</td>
+		</tr><tr>
+			<td><input id="CB_65" type="checkbox" name="ctl00$MainMasterContent$CB_65" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_65\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>davidrodier</td>
+		</tr><tr>
+			<td><input id="CB_66" type="checkbox" name="ctl00$MainMasterContent$CB_66" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_66\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/1766cf16-e036-403e-944e-799e2a572ba1.png" style="height:26px;width:26px;border-width:0px;"></td><td>Crème Glacée</td>
+		</tr><tr>
+			<td><input id="CB_67" type="checkbox" name="ctl00$MainMasterContent$CB_67" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_67\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/009d2d50-be0e-4bd9-a034-b3dec7582380.png" style="height:26px;width:26px;border-width:0px;"></td><td>Der Deutsche</td>
+		</tr><tr>
+			<td><input id="CB_68" type="checkbox" name="ctl00$MainMasterContent$CB_68" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_68\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/14c7df70-f4b9-4454-9949-c907d5425074.png" style="height:26px;width:26px;border-width:0px;"></td><td>Unknown</td>
+		</tr><tr>
+			<td><input id="CB_69" type="checkbox" name="ctl00$MainMasterContent$CB_69" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_69\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/72611e23-d3c3-448a-8239-841cf2e9775a.png" style="height:26px;width:26px;border-width:0px;"></td><td>Alex</td>
+		</tr><tr>
+			<td><input id="CB_70" type="checkbox" name="ctl00$MainMasterContent$CB_70" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_70\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/f5dac50f-38a5-4e56-9224-f4b9a046ef11.png" style="height:26px;width:26px;border-width:0px;"></td><td>Yvon Steinthal</td>
+		</tr><tr>
+			<td><input id="CB_71" type="checkbox" name="ctl00$MainMasterContent$CB_71" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_71\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>; DELETE FROM THREADS_MESSAGES</td>
+		</tr><tr>
+			<td><input id="CB_73" type="checkbox" name="ctl00$MainMasterContent$CB_73" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_73\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/0e910e0d-d175-4cb8-8ad7-0f986617c94e.png" style="height:26px;width:26px;border-width:0px;"></td><td>YO</td>
+		</tr><tr>
+			<td><input id="CB_74" type="checkbox" name="ctl00$MainMasterContent$CB_74" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_74\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>;DELETE FROM THREADS_MESSAGES</td>
+		</tr><tr>
+			<td><input id="CB_75" type="checkbox" name="ctl00$MainMasterContent$CB_75" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_75\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>';select * from Users'</td>
+		</tr><tr>
+			<td><input id="CB_76" type="checkbox" name="ctl00$MainMasterContent$CB_76" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_76\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>allo1</td>
+		</tr><tr>
+			<td><input id="CB_77" type="checkbox" name="ctl00$MainMasterContent$CB_77" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_77\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/0bfb7947-e8c8-42bc-bae3-89eebef9130d.png" style="height:26px;width:26px;border-width:0px;"></td><td>Francis</td>
+		</tr><tr>
+			<td><input id="CB_78" type="checkbox" name="ctl00$MainMasterContent$CB_78" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_78\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/5c7ed4cb-79e4-4435-89ce-90fb53ef103c.png" style="height:26px;width:26px;border-width:0px;"></td><td>asd</td>
+		</tr><tr>
+			<td><input id="CB_79" type="checkbox" name="ctl00$MainMasterContent$CB_79" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_79\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/Anonymous.png" style="height:26px;width:26px;border-width:0px;"></td><td>Jtatouche</td>
+		</tr><tr>
+			<td><input id="CB_80" type="checkbox" name="ctl00$MainMasterContent$CB_80" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainMasterContent$CB_80\&#39;,\&#39;\&#39;)&#39;, 0)"></td><td><img src="./NewThread.aspx_files/ec19a89f-b3fd-42db-bb33-a29e5281d87b.png" style="height:26px;width:26px;border-width:0px;"></td><td>Bob Binette</td>
+		</tr>
+	</tbody></table>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="auto-style1">
+                    <div id="ctl00_MainMasterContent_VS" style="color:Red;display:none;">
+
+</div>
+                </td>
+            </tr>
+        </tbody></table>
+    <br><br>
+    <div style="margin:auto; width:160px;">
+                    <input type="submit" name="ctl00$MainMasterContent$BTN_Back" value="Retour..." id="ctl00_MainMasterContent_BTN_Back" class="submitBTN">
+    </div>
+        <span id="ctl00_MainMasterContent_CV_TB_Thread_Title" style="color:Red;display:none;"></span>
+
+        <span id="ctl00_MainMasterContent_CV_PN_Selection" style="color:Red;display:none;"></span>
+    </div>
+
+        
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_MainMasterContent_VS"));
+var Page_Validators =  new Array(document.getElementById("ctl00_MainMasterContent_CV_TB_Thread_Title"), document.getElementById("ctl00_MainMasterContent_CV_PN_Selection"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_MainMasterContent_VS = document.all ? document.all["ctl00_MainMasterContent_VS"] : document.getElementById("ctl00_MainMasterContent_VS");
+ctl00_MainMasterContent_VS.headertext = "Sommaire des erreurs <hr/>";
+ctl00_MainMasterContent_VS.validationGroup = "VG_ThreadManager";
+var ctl00_MainMasterContent_CV_TB_Thread_Title = document.all ? document.all["ctl00_MainMasterContent_CV_TB_Thread_Title"] : document.getElementById("ctl00_MainMasterContent_CV_TB_Thread_Title");
+ctl00_MainMasterContent_CV_TB_Thread_Title.controltovalidate = "ctl00_MainMasterContent_TB_Thread_Title";
+ctl00_MainMasterContent_CV_TB_Thread_Title.errormessage = "Titre de la discussion absente!";
+ctl00_MainMasterContent_CV_TB_Thread_Title.display = "None";
+ctl00_MainMasterContent_CV_TB_Thread_Title.validationGroup = "VG_ThreadManager";
+ctl00_MainMasterContent_CV_TB_Thread_Title.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_MainMasterContent_CV_PN_Selection = document.all ? document.all["ctl00_MainMasterContent_CV_PN_Selection"] : document.getElementById("ctl00_MainMasterContent_CV_PN_Selection");
+ctl00_MainMasterContent_CV_PN_Selection.controltovalidate = "ctl00_MainMasterContent_TB_Thread_Title";
+ctl00_MainMasterContent_CV_PN_Selection.errormessage = "Il faut au moins un invité à cette dicussion!";
+ctl00_MainMasterContent_CV_PN_Selection.display = "None";
+ctl00_MainMasterContent_CV_PN_Selection.validationGroup = "VG_ThreadManager";
+ctl00_MainMasterContent_CV_PN_Selection.evaluationfunction = "CustomValidatorEvaluateIsValid";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_MainMasterContent_VS');
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+Sys.Application.add_init(function() {
+    $create(Sys.UI._Timer, {"enabled":true,"interval":1000,"uniqueID":"ctl00$TimerTimeLetf"}, null, null, $get("ctl00_TimerTimeLetf"));
+});
+
+document.getElementById('ctl00_MainMasterContent_CV_TB_Thread_Title').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_MainMasterContent_CV_TB_Thread_Title'));
+}
+
+document.getElementById('ctl00_MainMasterContent_CV_PN_Selection').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_MainMasterContent_CV_PN_Selection'));
+}
+//]]>
+</script>
+<span style="display: none !important;"><input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""></span><span style="display: none !important;"><input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""></span><span style="display: none !important;"><input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value=""></span><span style="display: none !important;"><input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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Fn4vSW1hZ2VzL0Fub255bW91cy5wbmcfBwKAA2RkAgIPDxYCHwEFBWFsbG8xZGQCLg9kFgZmD2QWAmYPEA8WBB8DZx8EaGRkZGQCAQ9kFgJmDw8WCB8FGwAAAAAAADpAAQAAAB8GGwAAAAAAADpAAQAAAB8CBTJ+L0F2YXRhcnMvMGJmYjc5NDctZThjOC00MmJjLWJhZTMtODllZWJlZjkxMzBkLnBuZx8HAoADZGQCAg8PFgIfAQUHRnJhbmNpc2RkAi8PZBYGZg9kFgJmDxAPFgQfA2cfBGhkZGRkAgEPZBYCZg8PFggfBRsAAAAAAAA6QAEAAAAfBhsAAAAAAAA6QAEAAAAfAgUyfi9BdmF0YXJzLzVjN2VkNGNiLTc5ZTQtNDQzNS04OWNlLTkwZmI1M2VmMTAzYy5wbmcfBwKAA2RkAgIPDxYCHwEFA2FzZGRkAjAPZBYGZg9kFgJmDxAPFgQfA2cfBGhkZGRkAgEPZBYCZg8PFggfBRsAAAAAAAA6QAEAAAAfBhsAAAAAAAA6QAEAAAAfAgUWfi9JbWFnZXMvQW5vbnltb3VzLnBuZx8HAoADZGQCAg8PFgIfAQUJSnRhdG91Y2hlZGQCMQ9kFgZmD2QWAmYPEA8WBB8DZx8EaGRkZGQCAQ9kFgJmDw8WCB8FGwAAAAAAADpAAQAAAB8GGwAAAAAAADpAAQAAAB8CBTJ+L0F2YXRhcnMvZWMxOWE4OWYtYjNmZC00MmRiLWJiMzMtYTI5ZTUyODFkODdiLnBuZx8HAoADZGQCAg8PFgIfAQULQm9iIEJpbmV0dGVkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WMwUhY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQWxsX1VzZXJzBRxjdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl85BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8xMAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMTEFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzEyBR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8xMwUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMTQFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzE1BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8xNgUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMTcFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzE5BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8yMQUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMjMFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzI0BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8yNQUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMjYFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzI3BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8yOAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMjkFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzMwBR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl8zMQUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfMzUFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzM4BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl80MAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNDIFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzQ0BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl81MwUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNTQFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzU3BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl81OAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNTkFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzYwBR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl82MQUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNjIFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzYzBR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl82NAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNjUFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzY2BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl82NwUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNjgFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzY5BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl83MAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNzEFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzczBR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl83NAUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNzUFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzc2BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl83NwUdY3RsMDAkTWFpbk1hc3RlckNvbnRlbnQkQ0JfNzgFHWN0bDAwJE1haW5NYXN0ZXJDb250ZW50JENCXzc5BR1jdGwwMCRNYWluTWFzdGVyQ29udGVudCRDQl84MMgKhkhyoIZFNy6hepx17rWfW9G0gPE9dwDFnEYvORgt"></span><span style="display: none !important;"><input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0"></span><span style="display: none !important;"><input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0"></span><span style="display: none !important;"><input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdADu+UbN5dYP21C1u62IYxn7B9fvKxnPLtZhjnSsgH4+OhB19/A35sn99rKA8CNQP1QKfgiZfD5dKrqcTRQHdXu9ows8NAeRqI1pISJsYipuooxrWpm35kcszdqX1RUQExjcqpgBOQkQWUuV1ugKVfii4mO/nzDp9IEjhQiG+zDU519SvRIT5fpC7Dw979uXk14e8g/Ze53ljew3lBGMVh0RP6Jo5C1cUTmUA3Z7JMxHwrLyYdPK3oaSALBJO17sUeRflJPoDjKxPLDro1q3iYhc6tTU6tOX2Kd+oCqBUnNa+ufCUpUFl1ugyKdCdHWcOgnppUXXcytqaHXjGyEyjIMMLk/Re9KY+Xi9Q8cWxZaN7GcH1xbuqQremXdYHNSZ1YBcr06wYpLnjMO+GcnmKIrg0tj77xDV95xCL4oeBXSqU4L0ujRxq/ZIo0hiaIUm6WMQaBA4F348+cmb4eMcap4ZZR+X1Ygu52KyJkqkPQYQdS+Sn1c0Juq9/5jnh7C90VrYscAkSL9g028zYipY+h28hgeuwOuTyqZMKhkdehxz611QOEO7rTqTsPoE+Tg8zp5vcMsyFi0k7q7UgF5r6/D4i+LmrEtc6B30aSfAf8LG3q7cXdqRqY4Q4kmxsbBcPdbOLoYbkyRc9QkfJClSdJhhHCA3nC5rdzWWbYrcYMONqizN78uQoutZFhmQdN0MlgvDBTcAtqVJ+2QHLLESnWQwlAdJ82j29jAFQ3c49sC2TqGRCLrEC8MvQjUiOI2Y/oPoR17+i684d0jm8pfKmpunMB76B8SsJGBx5ch4XuC3rOGOIDi6iVGynVmbzB6qeEjUNyDCuvdC+E6eSVw6hvzJ0WtTS6N3BeT2SC4YCHVNVyqSAHF6DW1nKkmnL+c4AKXe91rlNRRIlDwDmyye1HBZt2IeZDgkRJ+qD3lMiNjYPkTQ6Z/jpNWZl/FoZpwg92lDda5D6NFQ/aEJs8fqOzgNW4GKRk/bLvJEshTml00DtCHwuQKVJ6YLaBkk9oPzRT38qc9wGS3exIZnYzIw/OHNQUEaPIBNCr7yEl9DkWTcHnInhYYpY6J7PkSy4hBlgVOMnr2S7IZYCoXsacEgZ6nloS+8Ao8ThgWVjcUlCugPL+YAvN0tip+jL/OJCiu5iHNqRaTIB+1TUFrlG5gjJrimKeQYkOKRolCNMtqNM3/EdpAumaHvqF0g1mRRGtpfV/2D0/ZsWcNmViHk0+fOMjAlO+fcvbAEU6rooFJzrizMMSnBBKYPPisXKWfTKWfAGPEwjQQRDOf4GdlW9/cRjglID"></span></form>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            InstallCallBack();
+            
+        });
+</script>
+
+
+</body></html>
