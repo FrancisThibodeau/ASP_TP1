@@ -20,7 +20,7 @@ namespace TP1
 
         protected void TimerChatroom_Tick(object sender, EventArgs e)
         {
-
+            UPN_Chatroom.Update();
         }
 
         private void ShowMessages()
@@ -82,7 +82,7 @@ namespace TP1
         private void ShowInvitedUsers()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
-            if (Session["CurrentThread"] != null && 
+            if (Session["CurrentThread"] != null &&
                 access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]))
             {
                 access.EndQuerySQL();
@@ -203,6 +203,16 @@ namespace TP1
             message.EndQuerySQL();
         }
 
+        private Button CreateThreadButton(String threadId, String threadTitle)
+        {
+            Button btn = new Button();
+            btn.ID = "ThreadButton_" + threadId;
+            btn.Text = threadTitle;
+            btn.CssClass = threadId == (String)Session["CurrentThread"] ? "CurrentThreadButton" : "ThreadButton";
+            btn.Click += BTN_Thread_Click;
+            return btn;
+        }
+
         private void ShowThreadButtons()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
@@ -223,11 +233,7 @@ namespace TP1
                     tr = new TableRow();
                     td = new TableCell();
 
-                    Button btn = new Button();
-                    btn.ID = "ThreadButton_" + thread.ID.ToString();
-                    btn.Text = thread.Title;
-                    btn.Click += BTN_Thread_Click;
-                    td.Controls.Add(btn);
+                    td.Controls.Add(CreateThreadButton(thread.ID.ToString(), thread.Title));
                     tr.Cells.Add(td);
 
                     table.Rows.Add(tr);
@@ -247,11 +253,7 @@ namespace TP1
                 tr = new TableRow();
                 td = new TableCell();
 
-                Button btn = new Button();
-                btn.ID = "ThreadButton_" + thread.ID.ToString();
-                btn.Text = thread.Title;
-                btn.Click += BTN_Thread_Click;
-                td.Controls.Add(btn);
+                td.Controls.Add(CreateThreadButton(thread.ID.ToString(), thread.Title));
                 tr.Cells.Add(td);
 
                 table.Rows.Add(tr);
@@ -284,6 +286,7 @@ namespace TP1
             return btn;
         }
 
+
         protected void BTN_Thread_Click(object sender, EventArgs e)
         {
             String threadId = ((Button)sender).ID;
@@ -297,8 +300,9 @@ namespace TP1
             LBL_Title.Text = thread.Title;
             thread.EndQuerySQL();
 
-            ShowMessages();
-            ShowInvitedUsers();
+            UPN_Chatroom.Update();
+            //ShowMessages();
+            //ShowInvitedUsers();
         }
 
         protected void BTN_Delete_Click(object sender, ImageClickEventArgs e)

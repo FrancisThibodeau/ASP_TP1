@@ -88,3 +88,18 @@
         color: black;
         background-color: lightgreen;
     }
+
+
+.ThreadButton {
+    width: 150px;
+    font-family: Arial;
+    font-size: 12px;
+    background-color: yellowgreen;
+}
+
+.CurrentThreadButton {
+    width: 150px;
+    font-family: Arial;
+    font-size: 12px;
+    background-color: chartreuse;
+}

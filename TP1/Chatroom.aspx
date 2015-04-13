@@ -14,10 +14,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
     <asp:Timer ID="TimerChatroom" runat="server" Interval="3000" OnTick="TimerChatroom_Tick"></asp:Timer>
 
-    <asp:UpdatePanel ID="UPN_Chatroom" runat="server">
-        <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="TimerChatroom" EventName="Tick" />
-        </Triggers>
+    <asp:UpdatePanel ID="UPN_Chatroom" runat="server" UpdateMode="Conditional">
 
         <ContentTemplate>
             <table>
