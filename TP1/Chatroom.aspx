@@ -5,13 +5,14 @@
         .auto-style1 {
             width: 547px;
         }
+
         .auto-style2 {
             width: 98px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
-        <asp:Timer ID="TimerChatroom" runat="server" Interval="3000" OnTick="TimerChatroom_Tick"></asp:Timer>
+    <asp:Timer ID="TimerChatroom" runat="server" Interval="3000" OnTick="TimerChatroom_Tick"></asp:Timer>
 
     <asp:UpdatePanel ID="UPN_Chatroom" runat="server">
         <Triggers>
@@ -50,7 +51,8 @@
             </table>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:Panel ID="PN_Message" runat="server">
+    <asp:UpdatePanel ID="PN_Message" runat="server">
+        <ContentTemplate>
             <table>
                 <tr>
                     <td id="empty" class="auto-style2"></td>
@@ -60,9 +62,10 @@
                     <td>
                         <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" CssClass="SubmitButton" OnClick="BTN_Send_Click" ClientIDMode="Static" />
                         <br />
-                        <asp:Button ID="BTN_Back" runat="server" Text="Retour" CssClass="SubmitButton" OnClick="BTN_Back_Click"/>
+                        <asp:Button ID="BTN_Back" runat="server" Text="Retour" CssClass="SubmitButton" OnClick="BTN_Back_Click" />
                     </td>
                 </tr>
             </table>
-    </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

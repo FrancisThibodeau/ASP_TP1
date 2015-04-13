@@ -196,6 +196,8 @@ namespace TP1
             message.Message = TB_Message.Text;
             message.Update();
 
+            BTN_Send.Text = "Envoyer";
+
             Session["EditID"] = null;
 
             message.EndQuerySQL();
@@ -320,6 +322,10 @@ namespace TP1
             message.SelectByID(messageId);
 
             Session["EditID"] = messageId;
+
+            TB_Message.Text = message.Message;
+            BTN_Send.Text = "Modifier";
+            PN_Message.Update();
 
             message.EndQuerySQL();
         }
