@@ -16,11 +16,10 @@ namespace TP1
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Inscription";
 
-
             if (!Page.IsPostBack)
             {
                 IMG_PreviewAvatar.ImageUrl = "~/Images/Anonymous.png";
-                Session["captcha"] = BuildCaptcha();
+                GenerateCaptcha();
             }
         }
         private void AddUser()
@@ -37,7 +36,7 @@ namespace TP1
                 FU_Avatar.SaveAs(Avatar_Path);
             }
 
-            user.Online = 0;
+            user.Online = 1;
             user.Username = TB_Username.Text;
             user.Password = TB_Password.Text;
             user.Fullname = TB_Fullname.Text;
@@ -45,6 +44,11 @@ namespace TP1
             user.Avatar = avatar_ID;
 
             user.Insert();
+
+            Session["User"] = user;
+            Session["StartTime"] = DateTime.Now;
+
+            Response.Redirect("Index.aspx");
         }
 
         protected void CV_Fullname_ServerValidate(object source, ServerValidateEventArgs args)
@@ -171,6 +175,10 @@ namespace TP1
                 AddUser();
                 Response.Redirect("Login.aspx");
             }
+            else
+            {
+                GenerateCaptcha();
+            }
         }
 
         //------------- CAPTCHA -------------
@@ -221,12 +229,17 @@ namespace TP1
             return captcha;
         }
 
-        protected void RegenarateCaptcha_Click(object sender, ImageClickEventArgs e)
+        private void GenerateCaptcha()
         {
             Session["captcha"] = BuildCaptcha();
             // + DateTime.Now.ToString() pour forcer le fureteur recharger le fichier
             IMGCaptcha.ImageUrl = "~/Captcha.png?ID=" + DateTime.Now.ToString();
             PN_Captcha.Update();
+        }
+
+        protected void RegenarateCaptcha_Click(object sender, ImageClickEventArgs e)
+        {
+            GenerateCaptcha();
         }
 
         protected void BTN_Annuler_Click(object sender, EventArgs e)

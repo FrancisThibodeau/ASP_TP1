@@ -230,7 +230,8 @@ namespace SqlExpressUtilities
         public void EndQuerySQL()
         {
             // Fermer la connection
-            if (connection.State != System.Data.ConnectionState.Closed)
+            if (connection != null && 
+                connection.State != System.Data.ConnectionState.Closed)
             connection.Close();
             // Débloquer l'objet Page.Application afin que d'autres session puissent
             // accéder à leur tour à la base de données

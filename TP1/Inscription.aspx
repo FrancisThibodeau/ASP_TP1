@@ -30,14 +30,14 @@
                             <td>
                                 <asp:Label ID="LBL_Password" runat="server" Text="Mot de passe"></asp:Label></td>
                             <td>
-                                <asp:TextBox ID="TB_Password" name="TB_Password" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="TB_Password" name="TB_Password" runat="server" TextMode="Password"></asp:TextBox></td>
                         </tr>
                         <!-- Password Confirm -->
                         <tr>
                             <td>
                                 <asp:Label ID="LBL_PasswordConfirm" runat="server" Text="Confirmation du mot de passe"></asp:Label></td>
                             <td>
-                                <asp:TextBox ID="TB_PasswordConfirm" name="TB_PasswordConfirm" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="TB_PasswordConfirm" name="TB_PasswordConfirm" runat="server" TextMode="Password"></asp:TextBox></td>
                         </tr>
                         <!-- Email -->
                         <tr>

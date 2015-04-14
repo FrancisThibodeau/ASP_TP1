@@ -31,9 +31,7 @@ namespace TP1
             // Création d'une TableUser pour cette session
             Session["User"] = new TableUsers((String)Application["MainDB"], this);
             ((TableUsers)Session["User"]).SelectByFieldName("USERNAME", TB_Username.Text);
-
-            // Création d'une TableLogins pour cette session
-            Session["Login"] = new TableLogins((String)Application["MainDB"], this);
+            ((TableUsers)Session["User"]).EndQuerySQL();
 
             // Flag l'usager en ligne
             ((TableUsers)Session["User"]).Online = 1;

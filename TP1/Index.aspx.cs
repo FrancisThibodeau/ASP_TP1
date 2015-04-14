@@ -22,7 +22,7 @@ namespace TP1
         // Cette fonction va dans le logout, je l'ai mis là pour la tester
         private void RecordLogin()
         {
-            TableLogins login = (TableLogins)Session["Login"];
+            TableLogins login = new TableLogins((String)Application["MainDB"], this);
             TableUsers user = (TableUsers)Session["User"];
             login.UserID = user.ID;
             login.LoginDate = (DateTime)Session["StartTime"];
