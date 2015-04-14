@@ -41,6 +41,7 @@ namespace TP1
                     td = new TableCell();
 
                     user.SelectByID(messages.UserID.ToString());
+                    user.EndQuerySQL();
 
                     // Avatar
                     Image img = new Image();
@@ -72,6 +73,8 @@ namespace TP1
 
                     table.Rows.Add(tr);
                 } while (messages.Next());
+
+                messages.EndQuerySQL();
 
                 PN_Messages.Controls.Clear();
                 PN_Messages.Controls.Add(table);
@@ -129,6 +132,7 @@ namespace TP1
             }
 
             users.EndQuerySQL();
+
             PN_Users.Controls.Clear();
             PN_Users.Controls.Add(table);
         }
@@ -137,7 +141,6 @@ namespace TP1
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
             access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
-
 
             TableUsers users = new TableUsers((String)Application["MainDB"], this);
 
@@ -224,7 +227,6 @@ namespace TP1
 
             if (access.SelectByFieldName("USER_ID", ((TableUsers)Session["User"]).ID))
             {
-
                 do
                 {
                     thread.SelectByID(access.ThreadID.ToString());
@@ -239,7 +241,6 @@ namespace TP1
                     table.Rows.Add(tr);
                 } while (access.Next());
             }
-
 
             access.EndQuerySQL();
 
@@ -300,9 +301,10 @@ namespace TP1
             LBL_Title.Text = thread.Title;
             thread.EndQuerySQL();
 
+            ShowMessages();
+            ShowInvitedUsers();
+            ShowThreadButtons();
             UPN_Chatroom.Update();
-            //ShowMessages();
-            //ShowInvitedUsers();
         }
 
         protected void BTN_Delete_Click(object sender, ImageClickEventArgs e)
@@ -351,7 +353,5 @@ namespace TP1
 
             TB_Message.Text = "";
         }
-
-
     }
 }

@@ -80,6 +80,8 @@ namespace TP1
                 TB_Username.BackColor = System.Drawing.Color.White;
                 args.IsValid = true;
             }
+
+            user.EndQuerySQL();
         }
         protected void CV_Password_ServerValidate(object source, ServerValidateEventArgs args)
         {

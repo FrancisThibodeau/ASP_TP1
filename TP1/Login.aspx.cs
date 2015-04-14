@@ -87,6 +87,8 @@ namespace TP1
                 valide = user.Password == TB_Password.Text;
             }
 
+            user.EndQuerySQL();
+
             return valide;
         }
 
@@ -116,6 +118,7 @@ namespace TP1
                 TB_Username.Text = "";
                 TB_Password.Text = "";
             }
+            users.EndQuerySQL();
         }
         private void EnvoyerPasswordEmail(TableUsers connexion)
         {
