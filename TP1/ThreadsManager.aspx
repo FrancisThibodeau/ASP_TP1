@@ -9,14 +9,27 @@
             <tbody>
                 <tr>
                     <td>
-
-                        <!-- Contenu de la partie gauche de la table -->
-
+                        <h3>Liste de mes discussions</h3>
+                        <asp:ListBox ID="LBL_ListDiscussions" runat="server" Width="200px"></asp:ListBox>
+                        <br />
+                        <asp:Button ID="BTN_New" runat="server" Text="Nouveau" OnClick="BTN_New_Click" />
+                        <br />
+                        <asp:Button ID="BTN_Modify" runat="server" Text="Modifier" OnClick="BTN_Modify_Click" />
+                        <br />
+                        <asp:Button ID="BTN_Delete" runat="server" Text="Supprimer" OnClick="BTN_Delete_Click" />
+                        <br />
+                        <asp:Button ID="BTN_Retour" runat="server" Text="Retour" OnClick="BTN_Retour_Click" />
                     </td>
                     <td>
-
-                        <!-- Contenu de la partie droite de la table -->
-
+                        <h3>Titre de la discussion</h3>
+                        <asp:TextBox ID="TBX_NewThread" runat="server" Width="200px"></asp:TextBox>
+                        <br />
+                        <h4>Sélection des invités</h4>
+                        <asp:CheckBox ID="CBX_All" runat="server" />
+                        Tous les usagers
+                        <asp:Panel ID="PN_User_Content" runat="server">
+                            <asp:CheckBoxList ID="CBX_Users" runat="server"></asp:CheckBoxList>
+                        </asp:Panel>
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +54,7 @@
 
 
 
-   <%-- <table>
+    <%-- <table>
         <tr>
             <td>
                 <label>Liste de mes discussions</label>
@@ -109,5 +122,4 @@
             </td>
         </tr>
     </table>--%>
-
 </asp:Content>
