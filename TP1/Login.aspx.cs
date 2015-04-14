@@ -65,6 +65,7 @@ namespace TP1
             else if (!ValiderMotDePasse())
             {
                 TB_Password.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
+                CV_Password.ErrorMessage = "Nom d'usager et/ou mot de passe incorrect";
                 args.IsValid = false;
             }
             else

@@ -43,11 +43,11 @@ namespace TP1
         {
             TB_Fullname.Text = user.Fullname;
             TB_Username.Text = user.Username;
-            TB_Password.Text = TB_PasswordConfirm.Text = user.Password;
+            TB_Password.Attributes.Add("value", user.Password);
+            TB_PasswordConfirm.Attributes.Add("value", user.Password);
             TB_Email.Text = TB_EmailConfirm.Text = user.Email;
 
-            if (user.Avatar != "")
-                IMG_PreviewAvatar.ImageUrl = @"~\Avatars\" + user.Avatar + ".png";
+            IMG_PreviewAvatar.ImageUrl = user.Avatar != "" ? @"~\Avatars\" + user.Avatar + ".png" : "~/Images/Anonymous.png";
         }
 
         private void UpdateUser()
@@ -93,11 +93,19 @@ namespace TP1
                 TB_Username.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
                 args.IsValid = false;
             }
+            else if (user.SelectByFieldName("USERNAME", TB_Username.Text))
+            {
+                TB_Username.BackColor = System.Drawing.Color.FromArgb(0, 255, 200, 200);
+                CV_Username.ErrorMessage = "Ce nom d'usager est déjà pris";
+                args.IsValid = false;
+            }
             else
             {
                 TB_Username.BackColor = System.Drawing.Color.White;
                 args.IsValid = true;
             }
+
+            user.EndQuerySQL();
         }
         protected void CV_Password_ServerValidate(object source, ServerValidateEventArgs args)
         {
