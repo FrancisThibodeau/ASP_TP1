@@ -156,9 +156,12 @@ namespace TP1
         }
         System.Web.UI.WebControls.WebControl ContentDelegateEmail()
         {
-            Label lbl = new Label();
-            lbl.Text = Email;
-            return lbl;
+            System.Web.UI.WebControls.HyperLink link = new System.Web.UI.WebControls.HyperLink();
+
+            link.NavigateUrl = "mailto:" + Email;
+            link.Text = Email;
+
+            return link;
         }
         System.Web.UI.WebControls.WebControl ContentDelegateAvatar()
         {
@@ -174,6 +177,7 @@ namespace TP1
             img.Width = img.Height = 40;
             return img;
         }
+
         public static String DurationToString(DateTime start, DateTime end)
         {
             TimeSpan duration = end - start;

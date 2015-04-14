@@ -54,6 +54,7 @@ namespace TP1
             base.InitCellsContentDelegate();
             SetCellContentDelegate("AVATAR", ContentDelegateAvatar);
             SetCellContentDelegate("ONLINE", ContentDelegateOnline);
+            SetCellContentDelegate("EMAIL", ContentDelegateEmail);
         }
 
         public override void Insert()
@@ -86,6 +87,17 @@ namespace TP1
             img.Height = img.Width = 40;
             return img;
         }
+
+        System.Web.UI.WebControls.WebControl ContentDelegateEmail()
+        {
+            System.Web.UI.WebControls.HyperLink link = new System.Web.UI.WebControls.HyperLink();
+
+            link.NavigateUrl = "mailto:" + Email;
+            link.Text = Email;
+
+            return link;
+        }
+
         public override void Update()
         {
             UpdateRecord(ID, Online, Username, Password,Fullname,Email,Avatar);

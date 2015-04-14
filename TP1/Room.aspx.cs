@@ -33,5 +33,10 @@ namespace TP1
         {
             Response.Redirect("Index.aspx");
         }
+
+        protected void TimerRoom_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
