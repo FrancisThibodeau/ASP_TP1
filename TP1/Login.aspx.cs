@@ -22,6 +22,7 @@ namespace TP1
         {
             if (Page.IsValid)
             {
+                TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
                 LoginUser();
             }
         }
