@@ -10,7 +10,8 @@
                 <tr>
                     <td>
                         <h3>Liste de mes discussions</h3>
-                        <asp:ListBox ID="LBL_ListDiscussions" runat="server" Width="200px" Height="800px"></asp:ListBox>
+                        <asp:ListBox ID="LBL_ListDiscussions" runat="server" Width="200px" Height="800px"
+                            AutoPostBack="true" OnSelectedIndexChanged="LBL_ListDiscussions_SelectedIndexChanged"></asp:ListBox>
                         <br />
                         <asp:Button ID="BTN_New" runat="server" Text="Nouveau" OnClick="BTN_New_Click" />
                         <br />

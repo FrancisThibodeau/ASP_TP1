@@ -12,6 +12,7 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Gestion des discussions";
+
             ListThreads();
             ListUsers();
         }
@@ -20,11 +21,20 @@ namespace TP1
         {
             TableThreads threads = new TableThreads((String)Application["MainDB"], this);
 
+            Session["SelectedThread"] = LBL_ListDiscussions.SelectedItem;
+
+            LBL_ListDiscussions.Items.Clear();
+
             if (threads.SelectByFieldName("CREATOR", ((TableUsers)Session["User"]).ID))
             {
                 do
                 {
-                    LBL_ListDiscussions.Items.Add(new ListItem(threads.Title, threads.ID.ToString()));
+                    ListItem item = new ListItem(threads.Title, threads.ID.ToString());
+
+                    if (Session["SelectedThread"] != null)
+                        item.Selected = threads.ID.ToString() == ((ListItem)Session["SelectedThread"]).Value;
+
+                    LBL_ListDiscussions.Items.Add(item);
                 } while (threads.Next());
             }
 
@@ -34,6 +44,7 @@ namespace TP1
         private void ListUsers()
         {
             TableUsers user = new TableUsers((String)Application["MainDB"], this);
+
             if (user.SelectAll())
             {
                 Table table = new Table();
@@ -49,6 +60,10 @@ namespace TP1
 
                         CheckBox cb = new CheckBox();
                         cb.ID = "CB_" + user.ID.ToString();
+                        if (Session["SelectedThread"] != null)
+                        {
+                            cb.Checked = HasAccess(user.ID.ToString(), ((ListItem)Session["SelectedThread"]).Value);
+                        }
                         td.Controls.Add(cb);
                         tr.Cells.Add(td);
 
@@ -72,6 +87,20 @@ namespace TP1
             }
 
             user.EndQuerySQL();
+        }
+
+        private bool HasAccess(String userId, String threadId)
+        {
+            bool hasAccess = false;
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            access.SelectByFieldName("THREAD_ID", threadId);
+
+            do
+            {
+                hasAccess = access.UserID == 0 || access.UserID.ToString() == userId;
+            } while (!hasAccess && access.Next());
+
+            return hasAccess;
         }
 
         private void CreateNewThread()
@@ -157,6 +186,12 @@ namespace TP1
         protected void BTN_Retour_Click(object sender, EventArgs e)
         {
             Response.Redirect("Index.aspx");
+        }
+
+        protected void LBL_ListDiscussions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListItem item = LBL_ListDiscussions.SelectedItem;
+            Session["SelectedThread"] = item;
         }
     }
 }
