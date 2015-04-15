@@ -60,10 +60,6 @@ namespace TP1
 
                         CheckBox cb = new CheckBox();
                         cb.ID = "CB_" + user.ID.ToString();
-                        if (Session["SelectedThread"] != null)
-                        {
-                            cb.Checked = HasAccess(user.ID.ToString(), ((ListItem)Session["SelectedThread"]).Value);
-                        }
                         td.Controls.Add(cb);
                         tr.Cells.Add(td);
 
@@ -99,6 +95,8 @@ namespace TP1
             {
                 hasAccess = access.UserID == 0 || access.UserID.ToString() == userId;
             } while (!hasAccess && access.Next());
+
+            access.EndQuerySQL();
 
             return hasAccess;
         }
@@ -147,11 +145,20 @@ namespace TP1
                         access.UserID = long.Parse(cb.ID.Replace("CB_", ""));
                         access.Insert();
                     }
-
                 }
             }
         }
 
+        private void CheckInvitedUsers()
+        {
+            Table table = (Table)PN_User_Content.Controls[0];
+            foreach (TableRow tr in table.Rows)
+            {
+                TableCell td = tr.Cells[0];
+                CheckBox cb = (CheckBox)td.Controls[0];
+                cb.Checked = HasAccess(cb.ID.Replace("CB_", ""), ((ListItem)Session["SelectedThread"]).Value);
+            }
+        }
 
         //protected void CVal_TitreDiscussion_ServerValidate(object source, ServerValidateEventArgs args)
         //{
@@ -190,8 +197,8 @@ namespace TP1
 
         protected void LBL_ListDiscussions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListItem item = LBL_ListDiscussions.SelectedItem;
-            Session["SelectedThread"] = item;
+            CheckInvitedUsers();
+            TBX_NewThread.Text = LBL_ListDiscussions.SelectedItem.Text;
         }
     }
 }
