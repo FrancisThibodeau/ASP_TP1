@@ -25,7 +25,7 @@
                         <asp:TextBox ID="TBX_NewThread" runat="server" Width="200px"></asp:TextBox>
                         <br />
                         <h4>Sélection des invités</h4>
-                        <asp:CheckBox ID="CBX_All" runat="server" />
+                        <asp:CheckBox ID="CBX_All" runat="server"/>
                         Tous les usagers
                         <asp:Panel ID="PN_User_Content" runat="server">
                             <asp:CheckBoxList ID="CBX_Users" runat="server"></asp:CheckBoxList>

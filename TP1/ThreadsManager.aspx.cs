@@ -12,10 +12,63 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Gestion des discussions";
+            ListThreads();
+            ListUsers();
+        }
 
+        private void ListThreads()
+        {
+            TableThreads threads = new TableThreads((String)Application["MainDB"], this);
+
+            if (threads.SelectByFieldName("CREATOR", ((TableUsers)Session["User"]).ID))
+            {
+                do
+                {
+                    LBL_ListDiscussions.Items.Add(new ListItem(threads.Title, threads.ID.ToString()));
+                } while (threads.Next());
+            }
+
+            threads.EndQuerySQL();
+        }
+
+        private void ListUsers()
+        {
             TableUsers user = new TableUsers((String)Application["MainDB"], this);
-            //LBL_ListDiscussions.Items.Add(ShowInvitedUsers());
-            //CBX_Users.Items.Add();
+            if (user.SelectAll())
+            {
+                Table table = new Table();
+                TableRow tr;
+                TableCell td;
+
+                while (user.Next())
+                {
+                    tr = new TableRow();
+                    td = new TableCell();
+
+                    CheckBox cb = new CheckBox();
+                    cb.ID = "CB_" + user.ID.ToString();
+                    td.Controls.Add(cb);
+                    tr.Cells.Add(td);
+
+                    td = new TableCell();
+                    Image img = new Image();
+                    img.Height = img.Width = 25;
+                    img.ImageUrl = user.Avatar != "" ? "~/Avatars/" + user.Avatar + ".png" : "~/Images/Anonymous.png";
+                    td.Controls.Add(img);
+                    tr.Cells.Add(td);
+
+                    td = new TableCell();
+                    td.Text = user.Fullname;
+                    tr.Cells.Add(td);
+
+                    table.Rows.Add(tr);
+                }
+
+                PN_User_Content.Controls.Clear();
+                PN_User_Content.Controls.Add(table);
+            }
+
+            user.EndQuerySQL();
         }
 
         //protected void CVal_TitreDiscussion_ServerValidate(object source, ServerValidateEventArgs args)
