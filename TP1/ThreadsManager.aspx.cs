@@ -12,6 +12,10 @@ namespace TP1
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)Master.FindControl("LBL_Titre")).Text = "Gestion des discussions";
+
+            TableUsers user = new TableUsers((String)Application["MainDB"], this);
+            //LBL_ListDiscussions.Items.Add(ShowInvitedUsers());
+            //CBX_Users.Items.Add();
         }
 
         //protected void CVal_TitreDiscussion_ServerValidate(object source, ServerValidateEventArgs args)
@@ -36,9 +40,6 @@ namespace TP1
                 ListItem newItem = new ListItem(TBX_NewThread.Text, "0");
                 LBL_ListDiscussions.Items.Add(newItem);
                 TBX_NewThread.Text = null;
-
-                CBX_Users.Items.Add(newItem);
-
                 // call de update panel
             }
             else
@@ -55,7 +56,7 @@ namespace TP1
 
         protected void BTN_Delete_Click(object sender, EventArgs e)
         {
-
+            LBL_ListDiscussions.Items.Remove(LBL_ListDiscussions.SelectedItem);
         }
 
         protected void BTN_Retour_Click(object sender, EventArgs e)
