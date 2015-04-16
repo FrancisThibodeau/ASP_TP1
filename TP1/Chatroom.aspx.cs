@@ -90,54 +90,11 @@ namespace TP1
             {
                 access.EndQuerySQL();
 
-                if (access.UserID == 0)
-                    ShowAllUsers();
-                else
-                    ShowSpecificUsers();
+                CreateUsersList();
             }
         }
 
-        private void ShowAllUsers()
-        {
-            TableUsers users = new TableUsers((String)Application["MainDB"], this);
-            users.SelectAll("ONLINE DESC");
-
-            Table table = new Table();
-            TableRow tr;
-            TableCell td;
-
-            while (users.Next())
-            {
-                tr = new TableRow();
-                td = new TableCell();
-
-                Image img = new Image();
-                img.Height = img.Width = 25;
-                img.ImageUrl = users.Online != 0 ? "~/Images/OnLine.png" : "~/Images/OffLine.png";
-                td.Controls.Add(img);
-                tr.Cells.Add(td);
-
-                td = new TableCell();
-                img = new Image();
-                img.Height = img.Width = 25;
-                img.ImageUrl = users.Avatar != "" ? "~/Avatars/" + users.Avatar + ".png" : "~/Images/Anonymous.png";
-                td.Controls.Add(img);
-                tr.Cells.Add(td);
-
-                td = new TableCell();
-                td.Text = users.Fullname;
-                tr.Cells.Add(td);
-
-                table.Rows.Add(tr);
-            }
-
-            users.EndQuerySQL();
-
-            PN_Users.Controls.Clear();
-            PN_Users.Controls.Add(table);
-        }
-
-        private void ShowSpecificUsers()
+        private void CreateUsersList()
         {
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
             access.SelectByFieldName("THREAD_ID", (String)Session["CurrentThread"]);
@@ -244,23 +201,6 @@ namespace TP1
 
             access.EndQuerySQL();
 
-            access.SelectByFieldName("USER_ID", 0);
-
-            do
-            {
-                thread.SelectByID(access.ThreadID.ToString());
-                thread.EndQuerySQL();
-
-                tr = new TableRow();
-                td = new TableCell();
-
-                td.Controls.Add(CreateThreadButton(thread.ID.ToString(), thread.Title));
-                tr.Cells.Add(td);
-
-                table.Rows.Add(tr);
-            } while (access.Next());
-
-            access.EndQuerySQL();
             PN_Threads.Controls.Clear();
             PN_Threads.Controls.Add(table);
         }

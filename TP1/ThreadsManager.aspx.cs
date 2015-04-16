@@ -93,7 +93,7 @@ namespace TP1
 
             do
             {
-                hasAccess = access.UserID == 0 || access.UserID.ToString() == userId;
+                hasAccess = access.UserID.ToString() == userId;
             } while (!hasAccess && access.Next());
 
             access.EndQuerySQL();
@@ -126,25 +126,17 @@ namespace TP1
 
             access.ThreadID = long.Parse(threadId);
 
-            if (CBX_All.Checked)
-            {
-                access.UserID = 0;
-                access.Insert();
-            }
-            else
-            {
-                access.UserID = ((TableUsers)Session["User"]).ID;
-                access.Insert();
+            access.UserID = ((TableUsers)Session["User"]).ID;
+            access.Insert();
 
-                foreach (TableRow tr in table.Rows)
+            foreach (TableRow tr in table.Rows)
+            {
+                TableCell td = tr.Cells[0];
+                CheckBox cb = (CheckBox)td.Controls[0];
+                if (cb.Checked)
                 {
-                    TableCell td = tr.Cells[0];
-                    CheckBox cb = (CheckBox)td.Controls[0];
-                    if (cb.Checked)
-                    {
-                        access.UserID = long.Parse(cb.ID.Replace("CB_", ""));
-                        access.Insert();
-                    }
+                    access.UserID = long.Parse(cb.ID.Replace("CB_", ""));
+                    access.Insert();
                 }
             }
         }
@@ -190,12 +182,28 @@ namespace TP1
         //
         //}
 
-        protected void BTN_New_Click(object sender, EventArgs e)
+        private void ClearForm()
         {
             Session["SelectedThread"] = null;
             LBL_ListDiscussions.ClearSelection();
             BTN_Edit.Text = "Créer";
             TBX_NewThread.Text = "";
+
+            ListThreads();
+            ListUsers();
+        }
+
+        private void DeleteThread()
+        {
+            TableThreads thread = new TableThreads((String)Application["MainDB"], this);
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            access.NonQuerySQL("DELETE FROM " + access.SQLTableName + " WHERE THREAD_ID = " + (((ListItem)Session["SelectedThread"]).Value));
+            thread.DeleteRecordByID(((ListItem)Session["SelectedThread"]).Value);
+        }
+
+        protected void BTN_New_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
 
         protected void BTN_Edit_Click(object sender, EventArgs e)
@@ -204,11 +212,17 @@ namespace TP1
                 CreateNewThread();
             else
                 EditSelectedThread();
+
+            ClearForm();
         }
 
         protected void BTN_Delete_Click(object sender, EventArgs e)
         {
-            LBL_ListDiscussions.Items.Remove(LBL_ListDiscussions.SelectedItem);
+            if (Session["SelectedThread"] != null)
+            {
+                DeleteThread();
+                ClearForm();
+            }
         }
 
         protected void BTN_Retour_Click(object sender, EventArgs e)
@@ -223,6 +237,19 @@ namespace TP1
                 CheckInvitedUsers();
                 TBX_NewThread.Text = LBL_ListDiscussions.SelectedItem.Text;
                 BTN_Edit.Text = "Modifier";
+            }
+        }
+
+        protected void CBX_All_CheckedChanged(object sender, EventArgs e)
+        {
+            Table table = (Table)PN_User_Content.Controls[0];
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+
+            foreach (TableRow tr in table.Rows)
+            {
+                TableCell td = tr.Cells[0];
+                CheckBox cb = (CheckBox)td.Controls[0];
+                cb.Checked = CBX_All.Checked;
             }
         }
     }
