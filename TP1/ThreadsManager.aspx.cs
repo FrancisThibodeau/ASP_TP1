@@ -160,6 +160,21 @@ namespace TP1
             }
         }
 
+        private void EditSelectedThread()
+        {
+            TableThreads thread = new TableThreads((String)Application["MainDB"], this);
+
+            thread.SelectByID(((ListItem)Session["SelectedThread"]).Value);
+            thread.EndQuerySQL();
+
+            thread.Title = TBX_NewThread.Text;
+            thread.Update();
+
+            TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            access.NonQuerySQL("DELETE FROM " + access.SQLTableName + " WHERE THREAD_ID = " + thread.ID.ToString());
+            CreateThreadAccess(thread.ID.ToString());
+        }
+
         //protected void CVal_TitreDiscussion_ServerValidate(object source, ServerValidateEventArgs args)
         //{
         //
@@ -177,12 +192,18 @@ namespace TP1
 
         protected void BTN_New_Click(object sender, EventArgs e)
         {
-            CreateNewThread();
+            Session["SelectedThread"] = null;
+            LBL_ListDiscussions.ClearSelection();
+            BTN_Edit.Text = "Créer";
+            TBX_NewThread.Text = "";
         }
 
-        protected void BTN_Modify_Click(object sender, EventArgs e)
+        protected void BTN_Edit_Click(object sender, EventArgs e)
         {
-
+            if (Session["SelectedThread"] == null)
+                CreateNewThread();
+            else
+                EditSelectedThread();
         }
 
         protected void BTN_Delete_Click(object sender, EventArgs e)
@@ -197,8 +218,12 @@ namespace TP1
 
         protected void LBL_ListDiscussions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CheckInvitedUsers();
-            TBX_NewThread.Text = LBL_ListDiscussions.SelectedItem.Text;
+            if (Session["SelectedThread"] != null)
+            {
+                CheckInvitedUsers();
+                TBX_NewThread.Text = LBL_ListDiscussions.SelectedItem.Text;
+                BTN_Edit.Text = "Modifier";
+            }
         }
     }
 }

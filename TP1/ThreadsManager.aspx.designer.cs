@@ -31,13 +31,13 @@ namespace TP1 {
         protected global::System.Web.UI.WebControls.Button BTN_New;
         
         /// <summary>
-        /// BTN_Modify control.
+        /// BTN_Edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_Modify;
+        protected global::System.Web.UI.WebControls.Button BTN_Edit;
         
         /// <summary>
         /// BTN_Delete control.

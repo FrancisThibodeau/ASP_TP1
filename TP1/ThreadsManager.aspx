@@ -15,7 +15,7 @@
                         <br />
                         <asp:Button ID="BTN_New" runat="server" Text="Nouveau" OnClick="BTN_New_Click" />
                         <br />
-                        <asp:Button ID="BTN_Modify" runat="server" Text="Modifier" OnClick="BTN_Modify_Click" />
+                        <asp:Button ID="BTN_Edit" runat="server" Text="Créer" OnClick="BTN_Edit_Click" />
                         <br />
                         <asp:Button ID="BTN_Delete" runat="server" Text="Supprimer" OnClick="BTN_Delete_Click" />
                         <br />
