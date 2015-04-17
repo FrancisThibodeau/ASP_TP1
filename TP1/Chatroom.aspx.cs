@@ -15,7 +15,11 @@ namespace TP1
 
             ShowMessages();
             ShowInvitedUsers();
-            ShowThreadButtons();
+
+            if (((TableUsers)Session["User"]).Username == "ADMIN")
+                ShowAllThreadButtons();
+            else
+                ShowThreadButtons();
         }
 
         protected void TimerChatroom_Tick(object sender, EventArgs e)
@@ -59,11 +63,10 @@ namespace TP1
 
                     // Edit buttons
                     td = new TableCell();
-                    if (user.ID == ((TableUsers)Session["User"]).ID)
-                    {
+                    if (user.ID == ((TableUsers)Session["User"]).ID || ((TableUsers)Session["User"]).Username == "ADMIN")
                         td.Controls.Add(CreateDeleteButton(messages.ID.ToString()));
+                    if (user.ID == ((TableUsers)Session["User"]).ID)
                         td.Controls.Add(CreateEditButton(messages.ID.ToString()));
-                    }
                     tr.Cells.Add(td);
 
                     // Message
@@ -200,6 +203,33 @@ namespace TP1
             }
 
             access.EndQuerySQL();
+
+            PN_Threads.Controls.Clear();
+            PN_Threads.Controls.Add(table);
+        }
+
+        private void ShowAllThreadButtons()
+        {
+            TableThreads thread = new TableThreads((String)Application["MainDB"], this);
+
+            Table table = new Table();
+            TableRow tr;
+            TableCell td;
+
+            thread.SelectAll();
+
+            while (thread.Next())
+            {
+                tr = new TableRow();
+                td = new TableCell();
+
+                td.Controls.Add(CreateThreadButton(thread.ID.ToString(), thread.Title));
+                tr.Cells.Add(td);
+
+                table.Rows.Add(tr);
+            }
+
+            thread.EndQuerySQL();
 
             PN_Threads.Controls.Clear();
             PN_Threads.Controls.Add(table);

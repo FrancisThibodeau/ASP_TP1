@@ -197,6 +197,8 @@ namespace TP1
         {
             TableThreads thread = new TableThreads((String)Application["MainDB"], this);
             TableThreadsAccess access = new TableThreadsAccess((String)Application["MainDB"], this);
+            TableThreadsMessages messages = new TableThreadsMessages((String)Application["MainDB"], this);
+            messages.NonQuerySQL("DELETE FROM " + messages.SQLTableName + " WHERE THREAD_ID = " + (((ListItem)Session["SelectedThread"]).Value));
             access.NonQuerySQL("DELETE FROM " + access.SQLTableName + " WHERE THREAD_ID = " + (((ListItem)Session["SelectedThread"]).Value));
             thread.DeleteRecordByID(((ListItem)Session["SelectedThread"]).Value);
         }
