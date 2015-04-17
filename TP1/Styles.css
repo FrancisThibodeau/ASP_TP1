@@ -216,10 +216,16 @@ label {
     font-family: Arial;
     font-size: 12px;
     margin: auto;
-    width: 625px;
+    width: 760px;
+    height: 350px;
     background-color: #565758;
     padding: 5px;
-    border: 1px solid black;
+    border: 2px solid black;
+}
+
+.AvatarPadding {
+    padding-left:50px;
+    padding-top:2px;
 }
 
 .SubmitButton {
@@ -244,6 +250,7 @@ label {
     text-decoration: none;
     vertical-align: middle;
     margin-top: 2px;
+    width: 155px;
 }
 
     .SubmitButton:hover {
@@ -266,6 +273,7 @@ label {
         border: 1px solid;
         border-color: #767778;
         border-collapse: collapse;
+        border-width: 2px;
         padding: 5px;
     }
 

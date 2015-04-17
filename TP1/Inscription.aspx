@@ -28,7 +28,7 @@
                         <!-- Password -->
                         <tr>
                             <td>
-                                <asp:Label ID="LBL_Password" runat="server" Text="Mot de passe"></asp:Label></td>
+                                <asp:Label ID="LBL_Password" runat="server" Text="Mot de passe" Width="200px"></asp:Label></td>
                             <td>
                                 <asp:TextBox ID="TB_Password" name="TB_Password" runat="server" TextMode="Password"></asp:TextBox></td>
                         </tr>
@@ -105,12 +105,12 @@
                         <!---- Image Avatar ---->
                         <tr>
                             <td>
-                                <asp:Image ID="IMG_PreviewAvatar" runat="server" ClientIDMode="Static" /></td>
+                                <asp:Image ID="IMG_PreviewAvatar" runat="server" ClientIDMode="Static" class="AvatarPadding"/></td>
                         </tr>
                         <!---- Bouton Choisir ---->
                         <tr>
                             <td>
-                                <asp:FileUpload ID="FU_Avatar" runat="server" ClientIDMode="Static" onchange="PreLoadImage();" />
+                                <asp:FileUpload ID="FU_Avatar" runat="server" ClientIDMode="Static" onchange="PreLoadImage();" CssClass="AvatarPadding"/>
                             </td>
                         </tr>
                     </table>

@@ -48,7 +48,7 @@
                         <!-- Email Confirm -->
                         <tr>
                             <td>
-                                <asp:Label ID="LBL_EmailConfirm" runat="server" Text="Confirmation de l'adresse de courriel"></asp:Label></td>
+                                <asp:Label ID="LBL_EmailConfirm" runat="server" Text="Confirmation de l'adresse de courriel" Width="204px"></asp:Label></td>
                             <td>
                                 <asp:TextBox ID="TB_EmailConfirm" name="TB_EmailConfirm" runat="server"></asp:TextBox></td>
                         </tr>
