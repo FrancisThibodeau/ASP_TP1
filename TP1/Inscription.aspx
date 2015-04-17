@@ -94,7 +94,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <asp:TextBox ID="TB_Captcha" runat="server" MaxLength="5"></asp:TextBox>
+                                                    <asp:TextBox ID="TB_Captcha" runat="server" MaxLength="5" Width="200px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>

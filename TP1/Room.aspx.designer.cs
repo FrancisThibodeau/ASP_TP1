@@ -31,15 +31,6 @@ namespace TP1 {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// BTN_Retour control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_Retour;
-        
-        /// <summary>
         /// PN_GridView control.
         /// </summary>
         /// <remarks>
@@ -47,5 +38,14 @@ namespace TP1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PN_GridView;
+        
+        /// <summary>
+        /// BTN_Retour control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTN_Retour;
     }
 }

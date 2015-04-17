@@ -8,7 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main_Content" runat="server">
-    <div class="LoginForm">
+    <div class="Login">
         <table style="width: 100%;">
             <tr>
                 <td class="auto-style1">Username : </td>
