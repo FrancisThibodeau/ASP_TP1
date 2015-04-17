@@ -16,6 +16,10 @@
 
     <asp:UpdatePanel ID="UPN_Chatroom" runat="server" UpdateMode="Conditional">
 
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="TimerChatroom" EventName="Tick" />
+        </Triggers>
+
         <ContentTemplate>
             <table>
                 <tr>
@@ -25,6 +29,7 @@
                         <table>
                             <tr>
                                 <td>
+
                                     <asp:Label ID="LBL_Title" runat="server" Text="Aucune discussion séectionée"></asp:Label></td>
                                 <td style="text-align: right">
                                     <asp:Label ID="LBL_Creator" runat="server" Text="..."></asp:Label></td>
@@ -48,7 +53,7 @@
             </table>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:UpdatePanel ID="PN_Message" runat="server">
+    <asp:UpdatePanel ID="PN_Message" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <table>
                 <tr>

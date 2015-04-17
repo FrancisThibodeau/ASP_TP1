@@ -24,7 +24,6 @@ namespace TP1
 
         protected void TimerChatroom_Tick(object sender, EventArgs e)
         {
-            UPN_Chatroom.Update();
         }
 
         private void ShowMessages()
@@ -267,8 +266,11 @@ namespace TP1
             Session["CurrentThread"] = threadId;
 
             TableThreads thread = new TableThreads((String)Application["MainDB"], this);
+            TableUsers user = new TableUsers((String)Application["MainDB"], this);
             thread.SelectByID(threadId);
+            user.SelectByID(thread.Creator.ToString());
             LBL_Title.Text = thread.Title;
+            LBL_Creator.Text = "Crée par " + user.Fullname + " " + thread.DateCreation.ToShortDateString();
             thread.EndQuerySQL();
 
             ShowMessages();
