@@ -294,12 +294,34 @@ label {
     width: 150px;
     font-family: Arial;
     font-size: 12px;
-    background-color: yellowgreen;
+    background-color: #767778;
 }
 
 .CurrentThreadButton {
     width: 150px;
     font-family: Arial;
     font-size: 12px;
-    background-color: chartreuse;
+    background-color: #ededed;
+}
+
+.selectbox
+{
+    width: 98%;
+    height: 270px;
+    background-color: #767778;
+    color: #ffffff;
+    border: 2px solid black;
+    margin: 5px 0 0 0;
+    padding: 5px;
+    padding-right: 10px;
+    overflow-y: scroll;
+}
+
+.TextBoxChat{
+ 	border:2px double #456879;
+	border-radius:10px;
+	height: 22px;
+	width: 230px;
+    border-color: black;
+    background-color: #767778;
 }

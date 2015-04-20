@@ -10,16 +10,15 @@
                 <tr>
                     <td>
                         <h3>Liste de mes discussions</h3>
-                        <asp:ListBox ID="LBL_ListDiscussions" runat="server" Width="200px" Height="800px"
-                            AutoPostBack="true" OnSelectedIndexChanged="LBL_ListDiscussions_SelectedIndexChanged"></asp:ListBox>
+                        <asp:ListBox ID="LBL_ListDiscussions" runat="server" CssClass="selectbox" AutoPostBack="true" OnSelectedIndexChanged="LBL_ListDiscussions_SelectedIndexChanged"></asp:ListBox>
                         <br />
-                        <asp:Button ID="BTN_New" runat="server" Text="Nouveau" OnClick="BTN_New_Click" />
+                        <asp:Button ID="BTN_New" runat="server" Text="Nouveau" OnClick="BTN_New_Click" class="SubmitButton"/>
                         <br />
-                        <asp:Button ID="BTN_Edit" runat="server" Text="Créer" OnClick="BTN_Edit_Click" />
+                        <asp:Button ID="BTN_Edit" runat="server" Text="Créer" OnClick="BTN_Edit_Click" class="SubmitButton"/>
                         <br />
-                        <asp:Button ID="BTN_Delete" runat="server" Text="Supprimer" OnClick="BTN_Delete_Click" />
+                        <asp:Button ID="BTN_Delete" runat="server" Text="Supprimer" OnClick="BTN_Delete_Click" class="SubmitButton"/>
                         <br />
-                        <asp:Button ID="BTN_Retour" runat="server" Text="Retour" OnClick="BTN_Retour_Click" />
+                        <asp:Button ID="BTN_Retour" runat="server" Text="Retour" OnClick="BTN_Retour_Click" class="SubmitButton"/>
                     </td>
                     <td>
                         <h3>Titre de la discussion</h3>

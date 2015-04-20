@@ -41,13 +41,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Panel ID="PN_Threads" runat="server"></asp:Panel>
+                        <asp:Panel ID="PN_Threads" BackColor="#b1b4b5" runat="server"></asp:Panel>
                     </td>
                     <td>
-                        <asp:Panel ID="PN_Messages" runat="server"></asp:Panel>
+                        <asp:Panel ID="PN_Messages" BackColor="#b1b4b5" runat="server"></asp:Panel>
                     </td>
                     <td>
-                        <asp:Panel ID="PN_Users" runat="server"></asp:Panel>
+                        <asp:Panel ID="PN_Users" BackColor="#b1b4b5" runat="server"></asp:Panel>
                     </td>
                 </tr>
             </table>
@@ -59,7 +59,7 @@
                 <tr>
                     <td id="empty" class="auto-style2"></td>
                     <td class="auto-style1">
-                        <asp:TextBox ID="TB_Message" runat="server" TextMode="MultiLine" Width="536px" ClientIDMode="Static"
+                        <asp:TextBox ID="TB_Message" runat="server" CssClass="TextBoxChat" TextMode="MultiLine" Width="536px" ClientIDMode="Static"
                             onkeydown="char = (event.which || event.keyCode); if (char == 13) document.getElementById(&quot;BTN_Send&quot;).click();"></asp:TextBox></td>
                     <td>
                         <asp:Button ID="BTN_Send" runat="server" Text="Envoyer" CssClass="SubmitButton" OnClick="BTN_Send_Click" ClientIDMode="Static" />

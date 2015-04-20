@@ -24,6 +24,7 @@ namespace TP1
 
         protected void TimerChatroom_Tick(object sender, EventArgs e)
         {
+
         }
 
         private void ShowMessages()
